@@ -21,6 +21,9 @@ jobs:
           gradle-version: 7.4.1
           arguments: build
 
+      - name: pwd
+        run: pwd
+
       - name: ls
         run: ls -R
 
