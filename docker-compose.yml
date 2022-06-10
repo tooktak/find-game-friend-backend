@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+    image: find-game-friend
+    profiles: [ test, instant ]
+    volumes:
+      - .:/app
+    environment:
+      MYSQL_USERNAME: test
+      MYSQL_PASSWORD: test
+      MYSQL_URL: jdbc:mysql://mysql:3306?useSSL=false&useUnicode=true
+    depends_on:
+      - mysql
+
+  mysql:
+    # https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/#drop-in-compatibility-of-specific-mariadb-versions
+    image: mariadb:10.4
+    restart: always
+    profiles: [test, instant]
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+
+volumes:
+  cache:

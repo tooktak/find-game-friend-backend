@@ -1,7 +1,15 @@
 package com.tooktak.findmyfirend.presentation;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping(path = "/public")
 public class EmptyController {
+
+    @GetMapping("/home")
+    public String home() {
+        return "Hello World2";
+    }
 }
