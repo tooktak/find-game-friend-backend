@@ -1,4 +1,7 @@
 FROM openjdk:11
+
+COPY . .
+
 ARG JAR_FILE=build/libs/find-my-firend-0.0.1-SNAPSHOT.jar
 ARG PROPERTIES_FILE=src/main/recources/application2.yaml
 
