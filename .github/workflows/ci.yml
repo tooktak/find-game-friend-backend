@@ -13,12 +13,13 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'
+          distribution: 'adopt'
 
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build
+          gradle-executable: /gradle/gradle-wrapper.jar
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
