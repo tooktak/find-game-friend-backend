@@ -17,8 +17,8 @@ public class GameService {
     }
 
     public Game save(){
-        Game game = new Game("helloGame","ttoorffgjkjieweruiweur123ouiodglfjdfior");
+        Game game = new Game("helloGame","ttoorffgjkjieweruiweur123ouiodglfjdfior1");
         gameRepository.save(game);
-        return gameRepository.getBythumbnail("ttoorffgjkjieweruiweur123ouiodglfjdfior");
+        return gameRepository.getBythumbnail("ttoorffgjkjieweruiweur123ouiodglfjdfior1");
     }
 }
