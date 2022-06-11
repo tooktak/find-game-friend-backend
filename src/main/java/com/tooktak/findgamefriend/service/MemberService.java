@@ -19,7 +19,13 @@ public class MemberService {
 
     @Transactional
     public Member register(MemberRegisterRequest req) {
-        Member member = new Member(req.getMemberId(), req.getPassword(), req.getEmail(), req.getNickName(), req.getPictureURL());
+        Member member = new Member(
+                req.getMemberId(),
+                req.getPassword(),
+                req.getEmail(),
+                req.getNickName(),
+                req.getPictureURL()
+        );
         return memberRepository.save(member);
     }
 }
