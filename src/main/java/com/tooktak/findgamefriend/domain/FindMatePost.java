@@ -32,7 +32,7 @@ public class FindMatePost extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Game.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id")
     private Game game;
 
@@ -81,5 +81,17 @@ public class FindMatePost extends BaseEntity {
 
     public String getDiscordLink() {
         return discordLink;
+    }
+
+    public LocalDateTime getLatestPullUpDateTime() {
+        return latestPullUpDateTime;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public Game getGame() {
+        return game;
     }
 }
