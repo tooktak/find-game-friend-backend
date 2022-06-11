@@ -11,8 +11,11 @@ public class SpringSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/public/**")
+                .antMatchers("/api/**")
                 .permitAll();
+        httpSecurity
+                .csrf()
+                .disable();
         return httpSecurity.build();
     }
 }
