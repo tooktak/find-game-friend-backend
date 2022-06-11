@@ -35,4 +35,4 @@ jobs:
         with:
           push: true
           context: .
-          tags: djh20/find-my-friend
+          tags: djh20/find-game-friend
