@@ -1,11 +1,7 @@
 package com.tooktak.findgamefriend.presentation;
 
-import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.domain.Game;
-import com.tooktak.findgamefriend.domain.User;
-import com.tooktak.findgamefriend.service.FindMatePostService;
 import com.tooktak.findgamefriend.service.GameService;
-import com.tooktak.findgamefriend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +20,6 @@ public class EmptyController {
     @GetMapping("/home")
     public String home() {
         Game game = this.gameService.save();
-        return game.getThumbnail();
+        return game.getThumbnailURL();
     }
 }

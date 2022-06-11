@@ -7,20 +7,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Game {
+public class Game extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "TEXT")
+    @Column
     private String title;
 
-    @Column(length = 255)
-    private String thumbnail;
+    @Column(columnDefinition = "TEXT")
+    private String thumbnailURL;
 
-    public Game(String title, String thumbnail) {
+    public Game(String title, String thumbnailURL) {
         this.title = title;
-        this.thumbnail = thumbnail;
+        this.thumbnailURL = thumbnailURL;
     }
 
     public Game(){}
@@ -33,7 +33,7 @@ public class Game {
         return title;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
+    public String getThumbnailURL() {
+        return thumbnailURL;
     }
 }
