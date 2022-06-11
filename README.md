@@ -12,4 +12,5 @@ mac: `brew install make` (`brew` required)
 
 ## Run app with Make
 
-* `make up`: run standalone application
+* `make stand-alone`: run standalone application without build, use local build file
+* `make stand-alone-rebuild`: run standalone application with build
