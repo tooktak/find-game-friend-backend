@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class Member extends BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,17 +24,12 @@ public class Member extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String pictureURL;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 50)
-    private MemberType memberType;
-
-    public Member(String memberId, String password, String email, String nickName, String pictureURL, MemberType memberType) {
+    public Member(String memberId, String password, String email, String nickName, String pictureURL) {
         this.memberId = memberId;
         this.password = password;
         this.email = email;
         this.nickName = nickName;
         this.pictureURL = pictureURL;
-        this.memberType = memberType;
     }
 
     public Member() {
