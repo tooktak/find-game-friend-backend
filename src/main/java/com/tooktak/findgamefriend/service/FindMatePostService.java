@@ -2,9 +2,11 @@ package com.tooktak.findgamefriend.service;
 
 import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -18,7 +20,14 @@ public class FindMatePostService {
     }
 
     public FindMatePost save() {
-        FindMatePost findMatePost = new FindMatePost("helloWorld","qweqwe123", "#3311w", "riifkkddfeqwee", "rtrtiiigfg1233qsd233123");
+        FindMatePost findMatePost = new FindMatePost(
+                "helloWorld",
+                "qweqwe123",
+                "#3311w",
+                "riifkkddfeqwee",
+                "rtrtiiigfg1233qsd233123",
+                LocalDateTime.now()
+        );
         findMatePostRepository.save(findMatePost);
         return findMatePostRepository.getByTitle("helloWorld");
     }
