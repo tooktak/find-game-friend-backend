@@ -1,6 +1,8 @@
 package com.tooktak.findgamefriend.presentation;
 
+import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.domain.User;
+import com.tooktak.findgamefriend.service.FindMatePostService;
 import com.tooktak.findgamefriend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/public")
 @RequiredArgsConstructor
 public class EmptyController {
-    private final UserService userService;
+    private final FindMatePostService findMatePostService;
 
     @GetMapping("/home")
     public String home() {
-        User user = this.userService.save();
+        FindMatePost findMatePost = this.findMatePostService.save();
 
-        return user.getEmail();
+        return findMatePost.getKakaoLink();
     }
 }

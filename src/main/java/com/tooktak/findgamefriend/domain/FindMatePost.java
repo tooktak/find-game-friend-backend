@@ -1,14 +1,13 @@
 package com.tooktak.findgamefriend.domain;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
 public class FindMatePost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false,unique = true,length = 100)
     private String postId;
 
@@ -24,14 +23,18 @@ public class FindMatePost {
     @Column(nullable = false,columnDefinition = "TEXT")
     private String discordLink;
 
-    public FindMatePost(Long id, String postId, String contents, String hashTag, String kakaoLink, String discordLink) {
-        this.id = id;
+    public FindMatePost(String postId, String contents, String hashTag, String kakaoLink, String discordLink) {
         this.postId = postId;
         this.contents = contents;
         this.hashTag = hashTag;
         this.kakaoLink = kakaoLink;
         this.discordLink = discordLink;
     }
+
+    public FindMatePost(){
+
+    }
+
 
     public Long getId() {
         return id;
