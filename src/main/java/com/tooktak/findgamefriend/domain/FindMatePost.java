@@ -17,7 +17,7 @@ public class FindMatePost extends BaseEntity {
     private String contents;
 
     @Column(nullable = false)
-    private String hashTag;
+    private String hashtag;
 
     @Column(columnDefinition = "TEXT")
     private String kakaoLink;
@@ -32,14 +32,14 @@ public class FindMatePost extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Game.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id")
     private Game game;
 
     public FindMatePost(
             String title,
             String contents,
-            String hashTag,
+            String hashtag,
             String kakaoLink,
             String discordLink,
             LocalDateTime latestPullUpDateTime,
@@ -48,7 +48,7 @@ public class FindMatePost extends BaseEntity {
     ) {
         this.title = title;
         this.contents = contents;
-        this.hashTag = hashTag;
+        this.hashtag = hashtag;
         this.kakaoLink = kakaoLink;
         this.discordLink = discordLink;
         this.latestPullUpDateTime = latestPullUpDateTime;
@@ -71,8 +71,8 @@ public class FindMatePost extends BaseEntity {
         return contents;
     }
 
-    public String getHashTag() {
-        return hashTag;
+    public String getHashtag() {
+        return hashtag;
     }
 
     public String getKakaoLink() {
@@ -81,5 +81,17 @@ public class FindMatePost extends BaseEntity {
 
     public String getDiscordLink() {
         return discordLink;
+    }
+
+    public LocalDateTime getLatestPullUpDateTime() {
+        return latestPullUpDateTime;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public Game getGame() {
+        return game;
     }
 }

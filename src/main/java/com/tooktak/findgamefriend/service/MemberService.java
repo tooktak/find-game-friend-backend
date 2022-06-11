@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 
 
 @Service
+@Transactional(readOnly = true)
 public class MemberService {
     private final MemberRepository memberRepository;
 

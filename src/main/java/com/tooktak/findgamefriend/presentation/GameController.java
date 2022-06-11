@@ -1,6 +1,5 @@
 package com.tooktak.findgamefriend.presentation;
 
-import com.tooktak.findgamefriend.domain.Game;
 import com.tooktak.findgamefriend.service.GameService;
 import com.tooktak.findgamefriend.service.dto.game.GameCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
