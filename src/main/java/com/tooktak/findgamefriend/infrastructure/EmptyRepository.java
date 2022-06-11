@@ -1,4 +1,4 @@
-package com.tooktak.findmyfirend.infrastructure;
+package com.tooktak.findgamefriend.infrastructure;
 
 import org.springframework.stereotype.Repository;
 

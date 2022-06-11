@@ -1,4 +1,4 @@
-package com.tooktak.findmyfirend.presentation.middleware;
+package com.tooktak.findgamefriend.presentation.middleware;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
