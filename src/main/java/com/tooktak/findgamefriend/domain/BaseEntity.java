@@ -15,11 +15,11 @@ public class BaseEntity {
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime modifiedAt;
+    private LocalDateTime updatedAt;
 
-    public BaseEntity(LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public BaseEntity(LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
+        this.updatedAt = updatedAt;
     }
 
     public BaseEntity() {

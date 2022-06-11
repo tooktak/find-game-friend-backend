@@ -2,10 +2,8 @@ package com.tooktak.findgamefriend.service;
 
 import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 
 @Service

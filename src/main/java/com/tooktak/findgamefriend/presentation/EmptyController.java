@@ -1,9 +1,7 @@
 package com.tooktak.findgamefriend.presentation;
 
-import com.tooktak.findgamefriend.domain.FindMatePost;
-import com.tooktak.findgamefriend.domain.User;
-import com.tooktak.findgamefriend.service.FindMatePostService;
-import com.tooktak.findgamefriend.service.UserService;
+import com.tooktak.findgamefriend.domain.Game;
+import com.tooktak.findgamefriend.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,17 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/public")
 public class EmptyController {
-    private final FindMatePostService findMatePostService;
+    private final GameService gameService;
 
     @Autowired
-    public EmptyController(FindMatePostService findMatePostService) {
-        this.findMatePostService = findMatePostService;
+    public EmptyController(GameService gameService) {
+        this.gameService= gameService;
     }
 
     @GetMapping("/home")
     public String home() {
-        FindMatePost findMatePost = this.findMatePostService.save();
-
-        return findMatePost.getTitle();
+        Game game = this.gameService.save();
+        return game.getThumbnailURL();
     }
 }
