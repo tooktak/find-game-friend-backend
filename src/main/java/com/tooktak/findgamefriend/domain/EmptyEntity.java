@@ -1,4 +1,4 @@
-package com.tooktak.findmyfirend.domain;
+package com.tooktak.findgamefriend.domain;
 
 // @Entity
 public class EmptyEntity {
