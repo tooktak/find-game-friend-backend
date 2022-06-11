@@ -1,7 +1,6 @@
 package com.tooktak.findgamefriend.service;
 
 import com.tooktak.findgamefriend.domain.Member;
-import com.tooktak.findgamefriend.domain.MemberType;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
 import com.tooktak.findgamefriend.service.dto.member.MemberRegisterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
