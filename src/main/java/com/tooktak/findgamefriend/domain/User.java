@@ -23,12 +23,17 @@ public class User extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String pictureURL;
 
-    public User(String userId, String password, String email, String nickName, String pictureURL) {
+    @Enumerated(EnumType.STRING)
+    @Column(length = 50)
+    private UserType userType;
+
+    public User(String userId, String password, String email, String nickName, String pictureURL, UserType userType) {
         this.userId = userId;
         this.password = password;
         this.email = email;
         this.nickName = nickName;
         this.pictureURL = pictureURL;
+        this.userType = userType;
     }
 
     public User() {
