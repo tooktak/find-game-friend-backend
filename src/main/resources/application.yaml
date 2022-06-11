@@ -4,5 +4,9 @@ spring:
     password: ${MYSQL_PASSWORD}
     url: ${MYSQL_URL}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
 server:
   port: 8080
