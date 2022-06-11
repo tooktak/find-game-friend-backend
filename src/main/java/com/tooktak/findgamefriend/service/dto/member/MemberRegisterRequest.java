@@ -1,24 +1,24 @@
-package com.tooktak.findgamefriend.service.dto.user;
+package com.tooktak.findgamefriend.service.dto.member;
 
-public class UserRegisterRequest {
-    private String userId;
+public class MemberRegisterRequest {
+    private String memberId;
     private String password;
     private String email;
     private String nickName;
     private String pictureURL;
 
-    public UserRegisterRequest(String userId, String password, String email, String nickName, String pictureURL) {
-        this.userId = userId;
+    public MemberRegisterRequest(String memberId, String password, String email, String nickName, String pictureURL) {
+        this.memberId = memberId;
         this.password = password;
         this.email = email;
         this.nickName = nickName;
         this.pictureURL = pictureURL;
     }
 
-    public UserRegisterRequest(){}
+    public MemberRegisterRequest(){}
 
-    public String getUserId() {
-        return userId;
+    public String getMemberId() {
+        return memberId;
     }
 
     public String getPassword() {

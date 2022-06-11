@@ -10,9 +10,8 @@ spring:
     driver-class-name: org.h2.Driver
     database-platform: org.hibernate.dialect.H2Dialect
   jpa:
-    generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
   jackson:
     property-naming-strategy: SNAKE_CASE
 server:
