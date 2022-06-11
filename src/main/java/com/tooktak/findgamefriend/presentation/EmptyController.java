@@ -13,16 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/public")
 public class EmptyController {
     private final FindMatePostService findMatePostService;
+    private final UserService userService;
 
     @Autowired
-    public EmptyController(FindMatePostService findMatePostService) {
+    public EmptyController(FindMatePostService findMatePostService, UserService userService) {
         this.findMatePostService = findMatePostService;
+        this.userService = userService;
     }
 
     @GetMapping("/home")
     public String home() {
-        FindMatePost findMatePost = this.findMatePostService.save();
-
-        return findMatePost.getTitle();
+//        FindMatePost findMatePost = this.findMatePostService.save();
+        User user = userService.save();
+        return user.getEmail();
     }
 }

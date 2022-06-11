@@ -1,6 +1,7 @@
 package com.tooktak.findgamefriend.service;
 
 import com.tooktak.findgamefriend.domain.User;
+import com.tooktak.findgamefriend.domain.UserType;
 import com.tooktak.findgamefriend.infrastructure.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class UserService {
     }
 
     public User save() {
-        User user = new User("dasdsdas", "asdasdsadasdk", "emial@emial", "nickname", "url");
+        User user = new User("dasdsdas", "asdasdsadasdk", "emial@emial", "nickname", "url", UserType.NORMAL);
         userRepository.save(user);
-        return userRepository.getByUserId("djh20");
+        return userRepository.getByUserId("dasdsdas");
     }
 }

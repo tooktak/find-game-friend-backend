@@ -23,12 +23,16 @@ public class User {
     @Column(columnDefinition = "TEXT")
     private String pictureURL;
 
-    public User(String userId, String password, String email, String nickName, String pictureURL) {
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
+
+    public User(String userId, String password, String email, String nickName, String pictureURL, UserType userType) {
         this.userId = userId;
         this.password = password;
         this.email = email;
         this.nickName = nickName;
         this.pictureURL = pictureURL;
+        this.userType = userType;
     }
 
     public User() {
