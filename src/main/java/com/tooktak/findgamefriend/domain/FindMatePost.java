@@ -32,15 +32,9 @@ public class FindMatePost extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(nullable = false, length = 20) // from Member nickname for search efficiency
-    private String nickname;
-
     @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id")
     private Game game;
-
-    @Column  // from Game title for search efficiency
-    private String gameTitle;
 
     public FindMatePost(
             String title,
@@ -59,9 +53,7 @@ public class FindMatePost extends BaseEntity {
         this.discordLink = discordLink;
         this.latestPullUpDateTime = latestPullUpDateTime;
         this.member = member;
-        this.nickname = member.getNickName();
         this.game = game;
-        this.gameTitle = game.getTitle();
     }
 
     public FindMatePost() {
