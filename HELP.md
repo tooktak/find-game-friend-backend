@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.tooktak.find-my-firend' is invalid and this project uses 'com.tooktak.findmyfirend' instead.
+* The original package name 'com.tooktak.find-my-firend' is invalid and this project uses 'com.tooktak.findgamefriend' instead.
 
 # Getting Started
 

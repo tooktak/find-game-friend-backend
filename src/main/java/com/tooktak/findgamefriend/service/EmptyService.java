@@ -1,4 +1,4 @@
-package com.tooktak.findmyfirend.service;
+package com.tooktak.findgamefriend.service;
 
 import org.springframework.stereotype.Service;
 
