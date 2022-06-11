@@ -14,7 +14,7 @@ class GameServiceTest {
     @Test
     public void CreateTest() {
         Game game = gameService.create(new GameCreateRequest("title", "url"));
-        assert game.getTitle() == "title2";
+        assert game.getTitle() == "title";
         assert game.getThumbnailURL() == "url";
     }
 }
