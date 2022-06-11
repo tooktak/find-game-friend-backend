@@ -13,5 +13,3 @@ mac: `brew install make` (`brew` required)
 ## Run app with Make
 
 * `make up`: run standalone application
-
-tp
