@@ -19,6 +19,6 @@ public class EmptyController {
     public String home() {
         FindMatePost findMatePost = this.findMatePostService.save();
 
-        return findMatePost.getKakaoLink();
+        return findMatePost.getTitle();
     }
 }

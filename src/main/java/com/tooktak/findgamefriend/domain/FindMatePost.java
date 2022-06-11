@@ -1,15 +1,19 @@
 package com.tooktak.findgamefriend.domain;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+
 public class FindMatePost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,unique = true,length = 100)
-    private String postId;
+    @Column(nullable = false)
+    private String title;
 
     @Column(nullable = false)
     private String contents;
@@ -23,8 +27,10 @@ public class FindMatePost {
     @Column(nullable = false,columnDefinition = "TEXT")
     private String discordLink;
 
-    public FindMatePost(String postId, String contents, String hashTag, String kakaoLink, String discordLink) {
-        this.postId = postId;
+
+
+    public FindMatePost(String title, String contents, String hashTag, String kakaoLink, String discordLink) {
+        this.title = title;
         this.contents = contents;
         this.hashTag = hashTag;
         this.kakaoLink = kakaoLink;
@@ -35,13 +41,12 @@ public class FindMatePost {
 
     }
 
+    public String getTitle() {
+        return title;
+    }
 
     public Long getId() {
         return id;
-    }
-
-    public String getPostId() {
-        return postId;
     }
 
     public String getContents() {

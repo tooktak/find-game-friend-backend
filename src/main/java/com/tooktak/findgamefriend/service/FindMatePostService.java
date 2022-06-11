@@ -14,8 +14,8 @@ public class FindMatePostService {
     private final FindMatePostRepository findMatePostRepository;
 
     public FindMatePost save() {
-        FindMatePost findMatePost = new FindMatePost("rerw", "qweqwe123", "#3311w", "riifkkddfeqwee", "rtrtiiigfg1233qsd233123");
+        FindMatePost findMatePost = new FindMatePost("helloWorld","qweqwe123", "#3311w", "riifkkddfeqwee", "rtrtiiigfg1233qsd233123");
         findMatePostRepository.save(findMatePost);
-        return findMatePostRepository.getByPostId("rerw");
+        return findMatePostRepository.getByTitle("helloWorld");
     }
 }
