@@ -39,7 +39,7 @@ public class FindMatePost extends BaseEntity {
     public FindMatePost(
             String title,
             String contents,
-            String hashTag,
+            String hashtag,
             String kakaoLink,
             String discordLink,
             LocalDateTime latestPullUpDateTime,
