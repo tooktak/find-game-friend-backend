@@ -24,17 +24,12 @@ public class Member extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String pictureURL;
 
-    @Column(nullable = false, length = 50)
-    @Enumerated(EnumType.STRING)
-    private MemberType memberType;
-
-    public Member(String memberId, String password, String email, String nickName, String pictureURL, MemberType memberType) {
+    public Member(String memberId, String password, String email, String nickName, String pictureURL) {
         this.memberId = memberId;
         this.password = password;
         this.email = email;
         this.nickName = nickName;
         this.pictureURL = pictureURL;
-        this.memberType = memberType;
     }
 
     public Member() {
