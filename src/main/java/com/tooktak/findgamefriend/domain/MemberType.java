@@ -1,5 +1,5 @@
 package com.tooktak.findgamefriend.domain;
 
-public enum UserType {
+public enum MemberType {
     NORMAL, ADMIN
 }

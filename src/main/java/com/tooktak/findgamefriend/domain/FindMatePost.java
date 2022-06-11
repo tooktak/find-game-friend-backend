@@ -20,7 +20,7 @@ public class FindMatePost extends BaseEntity {
     private String contents;
 
     @Column(nullable = false)
-    private String hashTag;
+    private String hashtag;
 
     @Column(columnDefinition = "TEXT")
     private String kakaoLink;
@@ -28,10 +28,10 @@ public class FindMatePost extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String discordLink;
 
-    public FindMatePost(String title, String contents, String hashTag, String kakaoLink, String discordLink) {
+    public FindMatePost(String title, String contents, String hashtag, String kakaoLink, String discordLink) {
         this.title = title;
         this.contents = contents;
-        this.hashTag = hashTag;
+        this.hashtag = hashtag;
         this.kakaoLink = kakaoLink;
         this.discordLink = discordLink;
     }
@@ -51,8 +51,8 @@ public class FindMatePost extends BaseEntity {
         return contents;
     }
 
-    public String getHashTag() {
-        return hashTag;
+    public String getHashtag() {
+        return hashtag;
     }
 
     public String getKakaoLink() {

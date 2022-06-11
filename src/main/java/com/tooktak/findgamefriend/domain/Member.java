@@ -3,13 +3,13 @@ package com.tooktak.findgamefriend.domain;
 import javax.persistence.*;
 
 @Entity
-public class User extends BaseEntity {
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true, length = 100)
-    private String userId;
+    private String memberId;
 
     @Column(nullable = false)
     private String password;
@@ -25,18 +25,18 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 50)
-    private UserType userType;
+    private MemberType memberType;
 
-    public User(String userId, String password, String email, String nickName, String pictureURL, UserType userType) {
-        this.userId = userId;
+    public Member(String memberId, String password, String email, String nickName, String pictureURL, MemberType memberType) {
+        this.memberId = memberId;
         this.password = password;
         this.email = email;
         this.nickName = nickName;
         this.pictureURL = pictureURL;
-        this.userType = userType;
+        this.memberType = memberType;
     }
 
-    public User() {
+    public Member() {
 
     }
 
@@ -44,8 +44,8 @@ public class User extends BaseEntity {
         return id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getMemberId() {
+        return memberId;
     }
 
     public String getPassword() {
