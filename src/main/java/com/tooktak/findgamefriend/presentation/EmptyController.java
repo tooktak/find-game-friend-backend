@@ -15,8 +15,8 @@ public class EmptyController {
     private final FindMatePostService findMatePostService;
 
     @Autowired
-    public EmptyController(UserService userService) {
-        this.userService = userService;
+    public EmptyController(FindMatePostService findMatePostService) {
+        this.findMatePostService = findMatePostService;
     }
 
     @GetMapping("/home")
