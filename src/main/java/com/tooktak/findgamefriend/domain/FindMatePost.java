@@ -1,8 +1,5 @@
 package com.tooktak.findgamefriend.domain;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity
@@ -21,10 +18,10 @@ public class FindMatePost {
     @Column(nullable = false)
     private String hashTag;
 
-    @Column(nullable = false,columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String kakaoLink;
 
-    @Column(nullable = false,columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String discordLink;
 
 
