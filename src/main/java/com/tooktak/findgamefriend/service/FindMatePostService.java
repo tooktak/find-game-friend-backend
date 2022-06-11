@@ -20,15 +20,7 @@ public class FindMatePostService {
     }
 
     public FindMatePost save() {
-        FindMatePost findMatePost = new FindMatePost(
-                "helloWorld",
-                "qweqwe123",
-                "#3311w",
-                "riifkkddfeqwee",
-                "rtrtiiigfg1233qsd233123",
-                LocalDateTime.now()
-        );
-        findMatePostRepository.save(findMatePost);
-        return findMatePostRepository.getByTitle("helloWorld");
+        // TODO: 실제로 동작하도록 변경
+        return null;
     }
 }

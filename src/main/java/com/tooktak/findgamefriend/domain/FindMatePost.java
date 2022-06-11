@@ -1,10 +1,6 @@
 package com.tooktak.findgamefriend.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -32,13 +28,40 @@ public class FindMatePost extends BaseEntity {
     @Column
     private LocalDateTime latestPullUpDateTime;
 
-    public FindMatePost(String title, String contents, String hashTag, String kakaoLink, String discordLink, LocalDateTime latestPullUpDateTime) {
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @Column(nullable = false, length = 20) // from Member nickname for search efficiency
+    private String nickname;
+
+    @ManyToOne(targetEntity = Member.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "game_id")
+    private Game game;
+
+    @Column  // from Game title for search efficiency
+    private String gameTitle;
+
+    public FindMatePost(
+            String title,
+            String contents,
+            String hashTag,
+            String kakaoLink,
+            String discordLink,
+            LocalDateTime latestPullUpDateTime,
+            Member member,
+            Game game
+    ) {
         this.title = title;
         this.contents = contents;
         this.hashTag = hashTag;
         this.kakaoLink = kakaoLink;
         this.discordLink = discordLink;
         this.latestPullUpDateTime = latestPullUpDateTime;
+        this.member = member;
+        this.nickname = member.getNickName();
+        this.game = game;
+        this.gameTitle = game.getTitle();
     }
 
     public FindMatePost() {
