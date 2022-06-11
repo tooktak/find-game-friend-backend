@@ -15,7 +15,7 @@ public class Game {
     @Column(columnDefinition = "TEXT")
     private String title;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(length = 255)
     private String thumbnail;
 
     public Game(String title, String thumbnail) {
