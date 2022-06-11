@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class FindMatePost {
+public class FindMatePost extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +36,8 @@ public class FindMatePost {
         this.discordLink = discordLink;
     }
 
-    public FindMatePost(){}
+    public FindMatePost() {
+    }
 
     public String getTitle() {
         return title;
