@@ -29,20 +29,19 @@ public class FindMatePostController {
         findMatePostService.save(findMatePostRegisterRequest);
     }
 
-    @GetMapping("/by-game")
+    @GetMapping("/find-mate-post/by-game")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByGameResponse ListByGame(@RequestParam Long gameId){
+    public ListByGameResponse ListByGame(@RequestParam("game_id") Long gameId){
         List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByGame(gameId);
         ListByGameResponse listByGameResponse = new ListByGameResponse(findMatePostDTOList);
         return listByGameResponse;
     }
 
-    @GetMapping("/by-title")
+    @GetMapping("/find-mate-post/by-title")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByTitleResponse listByTitle(@RequestParam String title){
+    public ListByTitleResponse listByTitle(@RequestParam("title") String title){
         List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByTitle(title);
         ListByTitleResponse listByTitleResponse = new ListByTitleResponse(findMatePostDTOList);
         return listByTitleResponse;
     }
-
 }

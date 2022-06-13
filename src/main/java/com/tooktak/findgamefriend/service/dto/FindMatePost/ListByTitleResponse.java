@@ -8,4 +8,11 @@ public class ListByTitleResponse {
     public ListByTitleResponse(List<FindMatePostDTO> findMatePosts){
         this.findMatePosts = findMatePosts;
     }
+
+    public ListByTitleResponse() {
+    }
+
+    public List<FindMatePostDTO> getFindMatePosts() {
+        return findMatePosts;
+    }
 }
