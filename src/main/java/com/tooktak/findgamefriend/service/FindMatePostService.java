@@ -30,7 +30,7 @@ public class FindMatePostService {
         return null;
     }
 
-    public List<FindMatePostDTO> ListByGame(Long gameId){
+    public List<FindMatePostDTO> ListByGame(Long gameId){   //gameId => primaryKey
         Game game = gameRepository.getReferenceById(gameId);
         List<FindMatePost> findMatePosts = findMatePostRepository.getByGame(game);
         List<FindMatePostDTO> findMatePostDTOs = findMatePosts
@@ -40,4 +40,13 @@ public class FindMatePostService {
         return findMatePostDTOs;
     }
 
+    public List<FindMatePostDTO> ListByTitle(String title){
+        FindMatePost findMatePost = findMatePostRepository.getByTitle(title);
+        List<FindMatePost> findMatePosts = findMatePostRepository.getByTitle(findMatePost);
+        List<FindMatePostDTO> findMatePostDTOs = findMatePosts
+                .stream()
+                .map(f -> new FindMatePostDTO(f))
+                .collect(Collectors.toList());
+        return findMatePostDTOs;
+    }
 }

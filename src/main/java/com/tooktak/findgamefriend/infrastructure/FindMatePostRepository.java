@@ -9,4 +9,5 @@ import java.util.List;
 public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long> {
     FindMatePost getByTitle(String title);
     List<FindMatePost> getByGame(Game game);
+    List<FindMatePost> getByTitle(FindMatePost findMatePost);
 }

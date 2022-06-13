@@ -40,6 +40,7 @@ class FindMatePostServiceTest {
         Game game = new Game("mapleStory", "url");
         game = gameRepository.save(game);
 
+
         FindMatePost findMatePost1 = new FindMatePost(
                 "title1",
                 "contents1",
@@ -68,8 +69,12 @@ class FindMatePostServiceTest {
 
         List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByGame(game.getId());
         List<Long> findMatePostIdList = findMatePostDTOList.stream().map(d -> d.getId()).collect(Collectors.toList());
+        List<FindMatePostDTO> findMatePostDTOList1 = findMatePostService.ListByTitle(findMatePost1.getTitle());
+        List<String> findMatePostTitleList = findMatePostDTOList1.stream().map(f -> f.getTitle()).collect(Collectors.toList());
 
-        assert findMatePostIdList.contains(findMatePost1.getId()) == true;
         assert findMatePostIdList.contains(findMatePost2.getId()) == true;
+        assert findMatePostIdList.contains(findMatePost1.getId()) == true;
+        assert findMatePostTitleList.contains(findMatePost1.getTitle()) == true;
+        assert findMatePostTitleList.contains(findMatePost2.getTitle()) == true;
     }
 }

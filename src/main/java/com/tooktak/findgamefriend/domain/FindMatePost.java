@@ -56,8 +56,7 @@ public class FindMatePost extends BaseEntity {
         this.game = game;
     }
 
-    public FindMatePost() {
-    }
+    public FindMatePost() {}
 
     public String getTitle() {
         return title;

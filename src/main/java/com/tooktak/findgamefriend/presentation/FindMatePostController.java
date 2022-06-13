@@ -6,6 +6,7 @@ import com.tooktak.findgamefriend.service.FindMatePostService;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostDTO;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostRegisterRequest;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByGameResponse;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByTitleResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +37,12 @@ public class FindMatePostController {
         return listByGameResponse;
     }
 
+    @GetMapping("/by-title")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ListByTitleResponse listByTitle(@RequestParam String title){
+        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByTitle(title);
+        ListByTitleResponse listByTitleResponse = new ListByTitleResponse(findMatePostDTOList);
+        return listByTitleResponse;
+    }
 
 }
