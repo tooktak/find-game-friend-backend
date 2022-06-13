@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long> {
-    FindMatePost getByTitle(String title);
+    List<FindMatePost> getByTitle(String title);
     List<FindMatePost> getByGame(Game game);
-    List<FindMatePost> getByTitle(FindMatePost findMatePost);
 }

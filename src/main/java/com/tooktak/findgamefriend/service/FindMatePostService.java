@@ -41,8 +41,8 @@ public class FindMatePostService {
     }
 
     public List<FindMatePostDTO> ListByTitle(String title){
-        FindMatePost findMatePost = findMatePostRepository.getByTitle(title);
-        List<FindMatePost> findMatePosts = findMatePostRepository.getByTitle(findMatePost);
+        List<FindMatePost> findMatePost = findMatePostRepository.getByTitle(title);
+        List<FindMatePost> findMatePosts = findMatePostRepository.getByTitle(title);
         List<FindMatePostDTO> findMatePostDTOs = findMatePosts
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
