@@ -40,6 +40,7 @@ class FindMatePostServiceTest {
         Game game = new Game("mapleStory", "url");
         game = gameRepository.save(game);
 
+
         FindMatePost findMatePost1 = new FindMatePost(
                 "title1",
                 "contents1",
@@ -68,8 +69,103 @@ class FindMatePostServiceTest {
 
         List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByGame(game.getId());
         List<Long> findMatePostIdList = findMatePostDTOList.stream().map(d -> d.getId()).collect(Collectors.toList());
+        List<FindMatePostDTO> findMatePostDTOList1 = findMatePostService.ListByTitle(findMatePost1.getTitle());
+        List<String> findMatePostTitleList = findMatePostDTOList1.stream().map(f -> f.getTitle()).collect(Collectors.toList());
 
-        assert findMatePostIdList.contains(findMatePost1.getId()) == true;
         assert findMatePostIdList.contains(findMatePost2.getId()) == true;
+        assert findMatePostIdList.contains(findMatePost1.getId()) == true;
+        assert findMatePostTitleList.contains(findMatePost1.getTitle()) == true;
+    }
+
+    @Test
+    public void testListByTitle() {
+        Member member = new Member(
+                "memberId1",
+                "password1",
+                "email1",
+                "nickname1",
+                "pictureURL1"
+        );
+        member = memberRepository.save(member);
+        Game game = new Game("mapleStory", "url");
+        game = gameRepository.save(game);
+
+
+        FindMatePost findMatePost1 = new FindMatePost(
+                "title1",
+                "contents1",
+                "hashtag1",
+                "kakao1",
+                "discord1",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost1);
+
+        FindMatePost findMatePost2 = new FindMatePost(
+                "title2",
+                "contents2",
+                "hashtag2",
+                "kakao2",
+                "discord2",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost2);
+
+        List<FindMatePostDTO> findMatePostDTOList1 = findMatePostService.ListByTitle(findMatePost1.getTitle());
+        List<String> findMatePostTitleList = findMatePostDTOList1.stream().map(f -> f.getTitle()).collect(Collectors.toList());
+
+        assert findMatePostTitleList.contains(findMatePost1.getTitle()) == true;
+    }
+
+    @Test
+    public void testListByHashtag() {
+        Member member = new Member(
+                "member3211",
+                "password",
+                "email",
+                "nickname1231",
+                "pictureURL"
+        );
+        member = memberRepository.save(member);
+        Game game = new Game("mapleStory", "url");
+        game = gameRepository.save(game);
+
+
+        FindMatePost findMatePost1 = new FindMatePost(
+                "title1",
+                "contents1",
+                "hashtag1",
+                "kakao1",
+                "discord1",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost1);
+
+        FindMatePost findMatePost2 = new FindMatePost(
+                "title2",
+                "contents2",
+                "hashtag2",
+                "kakao2",
+                "discord2",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost2);
+
+       List<FindMatePostDTO> findMatePostDTOs = findMatePostService.ListByHashtag(findMatePost1.getHashtag());
+       List<String> stringList = findMatePostDTOs.stream().map(f -> f.getHashtag()).collect(Collectors.toList());
+
+        assert stringList.contains(findMatePost1.getHashtag()) == true;
     }
 }

@@ -23,6 +23,9 @@ public class FindMatePostDTO {
         this.gameTitle = findMatePost.getGame().getTitle();
     }
 
+    public FindMatePostDTO() {
+    }
+
     public Long getId() {
         return id;
     }
