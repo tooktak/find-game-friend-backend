@@ -3,10 +3,7 @@ package com.tooktak.findgamefriend.presentation;
 import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.service.FindMatePostService;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostDTO;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostRegisterRequest;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByGameResponse;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByTitleResponse;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,5 +40,13 @@ public class FindMatePostController {
         List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByTitle(title);
         ListByTitleResponse listByTitleResponse = new ListByTitleResponse(findMatePostDTOList);
         return listByTitleResponse;
+    }
+
+    @GetMapping("/find-mate-post/by-hashtag")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag){
+        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByHashtag(hashtag);
+        ListByHashtagResponse listByHashtagResponse = new ListByHashtagResponse(findMatePostDTOList);
+        return listByHashtagResponse;
     }
 }

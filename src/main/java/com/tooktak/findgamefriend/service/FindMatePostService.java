@@ -45,7 +45,7 @@ public class FindMatePostService {
         return findMatePostDTOs;
     }
 
-    public List<FindMatePostDTO> ListByTitle(String title){
+    public List<FindMatePostDTO> ListByHashtag(String hashtag){
         Member member = new Member(
                 "memberId",
                 "password",
@@ -53,6 +53,7 @@ public class FindMatePostService {
                 "nickname",
                 "pictureURL"
         );
+
         member = memberRepository.save(member);
         Game game = new Game("mapleStory", "url");
         game = gameRepository.save(game);
@@ -82,6 +83,52 @@ public class FindMatePostService {
 
         findMatePostRepository.save(findMatePost1);
         findMatePostRepository.save(findMatePost2);
+        List<FindMatePost> findMatePosts = findMatePostRepository.getByHashtag(hashtag);
+        List<FindMatePostDTO> findMatePostDTOs = findMatePosts
+                .stream()
+                .map(f -> new FindMatePostDTO(f))
+                .collect(Collectors.toList());
+        return findMatePostDTOs;
+    }
+
+    public List<FindMatePostDTO> ListByTitle(String title){
+        /*Member member = new Member(
+                "memberId",
+                "password",
+                "email",
+                "nickname",
+                "pictureURL"
+        );
+
+        member = memberRepository.save(member);
+        Game game = new Game("mapleStory", "url");
+        game = gameRepository.save(game);
+
+
+        FindMatePost findMatePost1 = new FindMatePost(
+                "title1",
+                "contents1",
+                "hashtag1",
+                "kakao1",
+                "discord1",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        FindMatePost findMatePost2 = new FindMatePost(
+                "title2",
+                "contents1",
+                "hashtag1",
+                "kakao1",
+                "discord1",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost1);
+        findMatePostRepository.save(findMatePost2);*/
 
         List<FindMatePost> findMatePosts = findMatePostRepository.getByTitle(title);
         List<FindMatePostDTO> findMatePostDTOs = findMatePosts

@@ -11,4 +11,5 @@ public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long
     @Query("select f from FindMatePost as f where f.title like CONCAT('%',:title,'%')")
     List<FindMatePost> getByTitle(String title);
     List<FindMatePost> getByGame(Game game);
+    List<FindMatePost> getByHashtag(String hashtag);
 }
