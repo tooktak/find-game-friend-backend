@@ -126,10 +126,10 @@ class FindMatePostServiceTest {
     @Test
     public void testListByHashtag() {
         Member member = new Member(
-                "member321",
+                "member3211",
                 "password",
                 "email",
-                "nickname123",
+                "nickname1231",
                 "pictureURL"
         );
         member = memberRepository.save(member);
