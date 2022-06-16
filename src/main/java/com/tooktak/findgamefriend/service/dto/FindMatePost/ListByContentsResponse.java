@@ -9,9 +9,9 @@ public class ListByContentsResponse {
         this.findMatePosts = findMatePosts;
     }
 
-    public ListByContentsResponse(){}
+    public ListByContentsResponse() {}
 
-    public List<FindMatePostDTO> findMatePostDTOS(){
+    public List<FindMatePostDTO> getFindMatePosts() {
         return findMatePosts;
     }
 }
