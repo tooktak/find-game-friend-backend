@@ -2,16 +2,16 @@ package com.tooktak.findgamefriend.service.dto.FindMatePost;
 
 import java.util.List;
 
-public class ListByTitleResponse {
+public class ListByContentsResponse {
     private List<FindMatePostDTO> findMatePosts;
 
-    public ListByTitleResponse(List<FindMatePostDTO> findMatePosts){
+    public ListByContentsResponse(List<FindMatePostDTO> findMatePosts) {
         this.findMatePosts = findMatePosts;
     }
 
-    public ListByTitleResponse() {}
+    public ListByContentsResponse(){}
 
-    public List<FindMatePostDTO> getFindMatePosts() {
+    public List<FindMatePostDTO> findMatePostDTOS(){
         return findMatePosts;
     }
 }

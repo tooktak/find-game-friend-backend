@@ -30,11 +30,11 @@ class FindMatePostServiceTest {
     @Test
     public void testListByGame() {
         Member member = new Member(
-                "memberId",
-                "password",
-                "email",
-                "nickname",
-                "pictureURL"
+                "memberId3",
+                "password3",
+                "email3",
+                "nickname3",
+                "pictureURL3"
         );
         member = memberRepository.save(member);
         Game game = new Game("mapleStory", "url");
@@ -89,7 +89,6 @@ class FindMatePostServiceTest {
         member = memberRepository.save(member);
         Game game = new Game("mapleStory", "url");
         game = gameRepository.save(game);
-
 
         FindMatePost findMatePost1 = new FindMatePost(
                 "title1",
@@ -167,5 +166,36 @@ class FindMatePostServiceTest {
        List<String> stringList = findMatePostDTOs.stream().map(f -> f.getHashtag()).collect(Collectors.toList());
 
         assert stringList.contains(findMatePost1.getHashtag()) == true;
+    }
+    @Test
+    public void testListByContents(){
+        Member member = new Member(
+                "mem123",
+                "mem123",
+                "email@google.com",
+                "hiHello",
+                "picURL"
+        );
+        member = memberRepository.save(member);
+        Game game = new Game("archeAge","archeURL");
+        game = gameRepository.save(game);
+
+        FindMatePost findMatePost = new FindMatePost(
+                "title321",
+                "contents321",
+                "#hashtag231",
+                "kakaoLink123",
+                "discordLink321",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost);
+
+        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByContents(findMatePost.getContents());
+        List<String> stringList = findMatePostDTOList.stream().map(f -> f.getContents()).collect(Collectors.toList());
+
+        assert stringList.contains(findMatePost.getContents()) == true;
     }
 }

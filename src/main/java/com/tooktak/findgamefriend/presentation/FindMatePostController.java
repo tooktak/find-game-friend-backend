@@ -49,4 +49,12 @@ public class FindMatePostController {
         ListByHashtagResponse listByHashtagResponse = new ListByHashtagResponse(findMatePostDTOList);
         return listByHashtagResponse;
     }
+
+    @GetMapping("/find-mate-post/by-contents")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ListByContentsResponse listByContents(@RequestParam("contents")String contents){
+        List<FindMatePostDTO> findMatePostDTOs = findMatePostService.ListByContents(contents);
+        ListByContentsResponse listByContentsResponse = new ListByContentsResponse(findMatePostDTOs);
+        return listByContentsResponse;
+    }
 }
