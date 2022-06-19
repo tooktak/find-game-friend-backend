@@ -45,7 +45,7 @@ public class FindMatePostService {
     }
 
     public ListByHashtagResponse ListByHashtag(String hashtag, Pageable pageable){
-        Page<FindMatePost> byHashtag = findMatePostRepository.getByHashtag(hashtag, pageable);
+        Page<FindMatePost> byHashtag = findMatePostRepository.getByHashtagWithPage(hashtag, pageable);
         List<FindMatePostDTO> findMatePostDTOs = byHashtag
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
@@ -54,12 +54,12 @@ public class FindMatePostService {
     }
 
     public ListByContentsResponse ListByContents(String contents, Pageable pageable){
-        Page<FindMatePost> byContents = findMatePostRepository.getByContents(contents, pageable);
+        Page<FindMatePost> byContents = findMatePostRepository.getByContentsWithPage(contents, pageable);
         List<FindMatePostDTO> findMatePostDTOs = byContents
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
-        return new ListByContentsResponse(findMatePostDTOs, byContents.getTotalElements(), byContents.getTotalPages(),byContents.getPageable());
+        return new ListByContentsResponse(findMatePostDTOs,byContents.getTotalElements(),byContents.getTotalPages(),pageable);
     }
 
     public ListByTitleWithPageResponse ListByTitleWithPage(String title, Pageable pageable){

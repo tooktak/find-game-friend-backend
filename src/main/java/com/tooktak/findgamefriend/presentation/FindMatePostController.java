@@ -28,7 +28,7 @@ public class FindMatePostController {
         findMatePostService.save(findMatePostRegisterRequest);
     }
 
-    @GetMapping("/find-mate-post/by-game")
+    @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
     public ListByGameResponse ListByGame(@RequestParam("game_id") Long gameId){
         List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByGame(gameId);
@@ -36,13 +36,13 @@ public class FindMatePostController {
         return listByGameResponse;
     }
 
-    @GetMapping("/find-mate-post/by-hashtag")
+    @GetMapping("/find-mate-post/by-hashtag-page")
     @ResponseStatus(code = HttpStatus.OK)
     public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag, Pageable pageable){
         return findMatePostService.ListByHashtag(hashtag,pageable);
     }
 
-    @GetMapping("/find-mate-post/by-contents")
+    @GetMapping("/find-mate-post/by-contents-page")
     @ResponseStatus(code = HttpStatus.OK)
     public ListByContentsResponse listByContents(@RequestParam("contents")String contents, Pageable pageable){
         return findMatePostService.ListByContents(contents,pageable);
