@@ -4,6 +4,7 @@ import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.service.FindMatePostService;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.*;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -57,5 +58,11 @@ public class FindMatePostController {
         List<FindMatePostDTO> findMatePostDTOs = findMatePostService.ListByContents(contents);
         ListByContentsResponse listByContentsResponse = new ListByContentsResponse(findMatePostDTOs);
         return listByContentsResponse;
+    }
+
+    @GetMapping("/find-mate-post/by-title-page")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ListByTitleWithPageResponse listByTitleWithPage (@RequestParam("title") String title, Pageable pageable){
+        return findMatePostService.ListByTitleWithPage(title,pageable);
     }
 }

@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 
 public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long> {
@@ -18,4 +20,7 @@ public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long
 
     @Query("select f from FindMatePost as f where f.contents like CONCAT('%',:contents,'%')")
     List<FindMatePost> getByContents(String contents);
+
+    @Query("select f from FindMatePost as f where f.title like CONCAT('%',:title,'%')")
+    Page<FindMatePost> getByTitleWithPage(@Param("title") String title, Pageable pageable);
 }

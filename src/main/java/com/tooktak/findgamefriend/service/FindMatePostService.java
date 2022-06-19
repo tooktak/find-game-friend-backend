@@ -2,13 +2,15 @@ package com.tooktak.findgamefriend.service;
 
 import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.domain.Game;
-import com.tooktak.findgamefriend.domain.Member;
 import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostDTO;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostRegisterRequest;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByTitleWithPageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -69,5 +71,14 @@ public class FindMatePostService {
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
         return findMatePostDTOs;
+    }
+
+    public ListByTitleWithPageResponse ListByTitleWithPage(String title, Pageable pageable){
+        Page<FindMatePost> byTitleWithPage = findMatePostRepository.getByTitleWithPage(title,pageable);
+        List<FindMatePostDTO> findMatePostDTOs = byTitleWithPage
+                .stream()
+                .map(f -> new FindMatePostDTO(f))
+                .collect(Collectors.toList());
+        return new ListByTitleWithPageResponse(findMatePostDTOs, byTitleWithPage.getTotalElements(), byTitleWithPage.getTotalPages(), byTitleWithPage.getPageable());
     }
 }

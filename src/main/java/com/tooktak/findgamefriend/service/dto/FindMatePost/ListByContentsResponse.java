@@ -14,4 +14,7 @@ public class ListByContentsResponse {
     public List<FindMatePostDTO> getFindMatePosts() {
         return findMatePosts;
     }
+
+    public static class PostRepositoryDTO {
+    }
 }
