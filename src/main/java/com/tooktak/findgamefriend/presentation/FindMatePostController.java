@@ -36,28 +36,16 @@ public class FindMatePostController {
         return listByGameResponse;
     }
 
-    @GetMapping("/find-mate-post/by-title")
-    @ResponseStatus(code = HttpStatus.OK)
-    public ListByTitleResponse listByTitle(@RequestParam("title") String title){
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByTitle(title);
-        ListByTitleResponse listByTitleResponse = new ListByTitleResponse(findMatePostDTOList);
-        return listByTitleResponse;
-    }
-
     @GetMapping("/find-mate-post/by-hashtag")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag){
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByHashtag(hashtag);
-        ListByHashtagResponse listByHashtagResponse = new ListByHashtagResponse(findMatePostDTOList);
-        return listByHashtagResponse;
+    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag, Pageable pageable){
+        return findMatePostService.ListByHashtag(hashtag,pageable);
     }
 
     @GetMapping("/find-mate-post/by-contents")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByContentsResponse listByContents(@RequestParam("contents")String contents){
-        List<FindMatePostDTO> findMatePostDTOs = findMatePostService.ListByContents(contents);
-        ListByContentsResponse listByContentsResponse = new ListByContentsResponse(findMatePostDTOs);
-        return listByContentsResponse;
+    public ListByContentsResponse listByContents(@RequestParam("contents")String contents, Pageable pageable){
+        return findMatePostService.ListByContents(contents,pageable);
     }
 
     @GetMapping("/find-mate-post/by-title-page")

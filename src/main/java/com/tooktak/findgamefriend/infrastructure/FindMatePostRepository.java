@@ -11,15 +11,13 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long> {
-    @Query("select f from FindMatePost as f where f.title like CONCAT('%',:title,'%')") //제목 포함단어 검색
-    List<FindMatePost> getByTitle(String title);
     List<FindMatePost> getByGame(Game game);
 
     @Query("select f from FindMatePost as f where f.hashtag like CONCAT('%',:hashtag,'%')")
-    List<FindMatePost> getByHashtag(String hashtag);
+    List<FindMatePost> getByHashtag(@Param("hashtag") String hashtag,Pageable pageable);
 
     @Query("select f from FindMatePost as f where f.contents like CONCAT('%',:contents,'%')")
-    List<FindMatePost> getByContents(String contents);
+    List<FindMatePost> getByContents(@Param("contents") String contents,Pageable pageable);
 
     @Query("select f from FindMatePost as f where f.title like CONCAT('%',:title,'%')")
     Page<FindMatePost> getByTitleWithPage(@Param("title") String title, Pageable pageable);
