@@ -7,9 +7,14 @@ import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostDTO;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByContentsResponse;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByHashtagResponse;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByTitleWithPageResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -67,14 +72,11 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        /*List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByGame(game.getId());
-        List<Long> findMatePostIdList = findMatePostDTOList.stream().map(d -> d.getId()).collect(Collectors.toList());
-        List<FindMatePostDTO> findMatePostDTOList1 = findMatePostService.ListByTitle(findMatePost1.getTitle());
-        List<String> findMatePostTitleList = findMatePostDTOList1.stream().map(f -> f.getTitle()).collect(Collectors.toList());
+        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.listByGame(game.getId());
+        List<Long> ids = findMatePostDTOList.stream().map(d -> d.getId()).collect(Collectors.toList());
 
-        assert findMatePostIdList.contains(findMatePost2.getId()) == true;
-        assert findMatePostIdList.contains(findMatePost1.getId()) == true;
-        assert findMatePostTitleList.contains(findMatePost1.getTitle()) == true;*/
+        assert ids.contains(findMatePost2.getId()) == true;
+        assert ids.contains(findMatePost1.getId()) == true;
     }
 
     @Test
@@ -116,10 +118,15 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        //List<FindMatePostDTO> findMatePostDTOList1 = findMatePostService.ListByTitle(findMatePost1.getTitle());
-        //List<String> findMatePostTitleList = findMatePostDTOList1.stream().map(f -> f.getTitle()).collect(Collectors.toList());
+        ListByTitleWithPageResponse response = findMatePostService.listByTitle("title", Pageable.ofSize(10));
+        List<Long> ids = response
+                .getFindMatePosts()
+                .stream()
+                .map(f -> f.getId())
+                .collect(Collectors.toList());
 
-        //assert findMatePostTitleList.contains(findMatePost1.getTitle()) == true;
+        assert ids.contains(findMatePost1.getId()) == true;
+        assert ids.contains(findMatePost2.getId()) == true;
     }
 
     @Test
@@ -147,7 +154,7 @@ class FindMatePostServiceTest {
                 game
         );
 
-        findMatePostRepository.save(findMatePost1);
+        findMatePost1 = findMatePostRepository.save(findMatePost1);
 
         FindMatePost findMatePost2 = new FindMatePost(
                 "title2",
@@ -160,12 +167,16 @@ class FindMatePostServiceTest {
                 game
         );
 
-        findMatePostRepository.save(findMatePost2);
+        findMatePost2 = findMatePostRepository.save(findMatePost2);
 
-       //List<FindMatePostDTO> findMatePostDTOs = findMatePostService.ListByHashtag(findMatePost1.getHashtag());
-        //List<String> stringList = findMatePostDTOs.stream().map(f -> f.getHashtag()).collect(Collectors.toList());
+        ListByHashtagResponse response = findMatePostService.listByHashtag("hashtag", Pageable.ofSize(10));
+        List<Long> ids = response.getFindMatePostDTOS()
+                .stream()
+                .map(f -> f.getId())
+                .collect(Collectors.toList());
 
-        //assert stringList.contains(findMatePost1.getHashtag()) == true;
+        assert ids.contains(findMatePost1.getId()) == true;
+        assert ids.contains(findMatePost2.getId()) == true;
     }
     @Test
     public void testListByContents(){
@@ -191,11 +202,17 @@ class FindMatePostServiceTest {
                 game
         );
 
-        findMatePostRepository.save(findMatePost);
+        findMatePost = findMatePostRepository.save(findMatePost);
 
-        //List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByContents(findMatePost.getContents());
-        //List<String> stringList = findMatePostDTOList.stream().map(f -> f.getContents()).collect(Collectors.toList());
+        ListByContentsResponse response = findMatePostService.listByContents(
+                "conten",
+                Pageable.ofSize(10)
+        );
+        List<Long> ids = response.getFindMatePosts()
+                .stream()
+                .map(f -> f.getId())
+                .collect(Collectors.toList());
 
-        //assert stringList.contains(findMatePost.getContents()) == true;
+        assert ids.contains(findMatePost.getId()) == true;
     }
 }
