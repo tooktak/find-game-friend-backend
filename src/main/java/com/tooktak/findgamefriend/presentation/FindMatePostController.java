@@ -1,9 +1,9 @@
 package com.tooktak.findgamefriend.presentation;
 
-import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.service.FindMatePostService;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.*;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,38 +23,27 @@ public class FindMatePostController {
     @PostMapping("/find-mate-post")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void FindMatePostSave(@RequestBody FindMatePostRegisterRequest findMatePostRegisterRequest){
-        findMatePostService.save(findMatePostRegisterRequest);
+        // TODO: 회원 작업 후 revisit
+        return;
     }
 
-    @GetMapping("/find-mate-post/by-game")
+    @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
     public ListByGameResponse ListByGame(@RequestParam("game_id") Long gameId){
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByGame(gameId);
+        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.listByGame(gameId);
         ListByGameResponse listByGameResponse = new ListByGameResponse(findMatePostDTOList);
         return listByGameResponse;
     }
 
-    @GetMapping("/find-mate-post/by-title")
-    @ResponseStatus(code = HttpStatus.OK)
-    public ListByTitleResponse listByTitle(@RequestParam("title") String title){
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByTitle(title);
-        ListByTitleResponse listByTitleResponse = new ListByTitleResponse(findMatePostDTOList);
-        return listByTitleResponse;
-    }
-
     @GetMapping("/find-mate-post/by-hashtag")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag){
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByHashtag(hashtag);
-        ListByHashtagResponse listByHashtagResponse = new ListByHashtagResponse(findMatePostDTOList);
-        return listByHashtagResponse;
+    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag, Pageable pageable){
+        return findMatePostService.listByHashtag(hashtag,pageable);
     }
 
-    @GetMapping("/find-mate-post/by-contents")
+    @GetMapping("/find-mate-post/by-title")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByContentsResponse listByContents(@RequestParam("contents")String contents){
-        List<FindMatePostDTO> findMatePostDTOs = findMatePostService.ListByContents(contents);
-        ListByContentsResponse listByContentsResponse = new ListByContentsResponse(findMatePostDTOs);
-        return listByContentsResponse;
+    public ListByTitleWithPageResponse listByTitle(@RequestParam("title") String title, Pageable pageable){
+        return findMatePostService.listByTitle(title,pageable);
     }
 }
