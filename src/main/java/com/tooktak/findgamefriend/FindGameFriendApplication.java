@@ -15,6 +15,5 @@ public class FindGameFriendApplication {
 	public static void main(String[] args) {
 		TimeZone.setDefault(TimeZone.getTimeZone("Etc/UTC")); // use UTC
 		SpringApplication.run(FindGameFriendApplication.class, args);
-		dasdsada
 	}
 }
