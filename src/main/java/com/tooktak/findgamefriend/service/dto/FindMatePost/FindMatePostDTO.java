@@ -21,7 +21,7 @@ public class FindMatePostDTO {
         this.kakaoLink = findMatePost.getKakaoLink();
         this.discordLink = findMatePost.getDiscordLink();
         this.nickname = findMatePost.getMember().getNickName();
-        this.gameTitle = findMatePost.getGame().getTitle();
+        this.gameTitle = findMatePost.getGame().getGameTitle();
     }
 
     public FindMatePostDTO() {}

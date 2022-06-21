@@ -13,13 +13,13 @@ public class Game extends BaseEntity {
     private Long id;
 
     @Column
-    private String title;
+    private String gameTitle;
 
     @Column(columnDefinition = "TEXT")
     private String thumbnailURL;
 
-    public Game(String title, String thumbnailURL) {
-        this.title = title;
+    public Game(String gameTitle, String thumbnailURL) {
+        this.gameTitle = gameTitle;
         this.thumbnailURL = thumbnailURL;
     }
 
@@ -29,8 +29,8 @@ public class Game extends BaseEntity {
         return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getGameTitle() {
+        return gameTitle;
     }
 
     public String getThumbnailURL() {

@@ -31,8 +31,8 @@ public class FindMatePostController {
 
     @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByGameResponse ListByGame(@RequestParam("title") String title, Pageable pageable){
-        return findMatePostService.listByGameResponse(title,pageable);
+    public ListByGameResponse ListByGame(@RequestParam("gameTitle") String gameTitle, Pageable pageable){
+        return findMatePostService.listByGameResponse(gameTitle,pageable);
     }
 
     @GetMapping("/find-mate-post/by-hashtag-page")
