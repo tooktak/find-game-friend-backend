@@ -3,6 +3,7 @@ package com.tooktak.findgamefriend.presentation;
 import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.service.FindMatePostService;
+import com.tooktak.findgamefriend.service.GameService;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,10 +31,8 @@ public class FindMatePostController {
 
     @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByGameResponse ListByGame(@RequestParam("game_id") Long gameId){
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByGame(gameId);
-        ListByGameResponse listByGameResponse = new ListByGameResponse(findMatePostDTOList);
-        return listByGameResponse;
+    public ListByGameResponse ListByGame(@RequestParam("title") String title, Pageable pageable){
+        return findMatePostService.listByGameResponse(title,pageable);
     }
 
     @GetMapping("/find-mate-post/by-hashtag-page")

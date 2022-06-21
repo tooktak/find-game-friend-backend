@@ -1,6 +1,7 @@
 package com.tooktak.findgamefriend.service.dto.FindMatePost;
 
 import com.tooktak.findgamefriend.domain.FindMatePost;
+import com.tooktak.findgamefriend.domain.Game;
 
 public class FindMatePostDTO {
     private Long id;
@@ -24,6 +25,8 @@ public class FindMatePostDTO {
     }
 
     public FindMatePostDTO() {}
+
+    public FindMatePostDTO(Game f) {}
 
     public Long getId() {
         return id;

@@ -6,6 +6,7 @@ import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.*;
+import com.tooktak.findgamefriend.service.dto.game.GameCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,6 +43,15 @@ public class FindMatePostService {
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
         return findMatePostDTOs;
+    }
+
+    public ListByGameResponse listByGameResponse(String gameTitle, Pageable pageable){
+        Page<Game> ByGameTitle = findMatePostRepository.getByGameTitle(gameTitle,pageable);
+        List<FindMatePostDTO> findMatePostDTOS = ByGameTitle
+                .stream()
+                .map(f -> new FindMatePostDTO(f))
+                .collect(Collectors.toList());
+        return new ListByGameResponse(findMatePostDTOS,ByGameTitle.getTotalElements(),ByGameTitle.getTotalPages(),pageable);
     }
 
     public ListByHashtagResponse ListByHashtag(String hashtag, Pageable pageable){
