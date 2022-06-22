@@ -1,6 +1,7 @@
 package com.tooktak.findgamefriend.service.dto.FindMatePost;
 
 import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 
 public class ListByTitleWithPageResponse {
@@ -26,7 +27,8 @@ public class ListByTitleWithPageResponse {
         return findMatePosts;
     }
 
-    public ListByTitleWithPageResponse() {}
+    public ListByTitleWithPageResponse() {
+    }
 
     public Long getTotalElements() {
         return totalElements;

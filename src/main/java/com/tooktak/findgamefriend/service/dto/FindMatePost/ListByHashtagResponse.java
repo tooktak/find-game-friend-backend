@@ -1,6 +1,7 @@
 package com.tooktak.findgamefriend.service.dto.FindMatePost;
 
 import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 
 public class ListByHashtagResponse {
@@ -28,9 +29,10 @@ public class ListByHashtagResponse {
         return totalPages;
     }
 
-    public ListByHashtagResponse(){}
+    public ListByHashtagResponse() {
+    }
 
-    public List<FindMatePostDTO> getFindMatePostDTOS(){
+    public List<FindMatePostDTO> getFindMatePostDTOS() {
         return findMatePostDTOS;
     }
 }

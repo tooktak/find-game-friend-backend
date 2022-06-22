@@ -21,23 +21,25 @@ public class FindMatePostController {
     @PostMapping("/find-mate-post")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void FindMatePostSave(@RequestBody FindMatePostRegisterRequest findMatePostRegisterRequest){
-        findMatePostService.save(findMatePostRegisterRequest);
+        // TODO: 회원 작업 후 revisit
+        return;
     }
 
     @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
+
     public ListByGameResponse listByGame(@RequestParam("gameTitle") String gameTitle, Pageable pageable){
         return findMatePostService.listByGameTitle(gameTitle,pageable);
-    }
 
-    @GetMapping("/find-mate-post/by-hashtag-page")
+    @GetMapping("/find-mate-post/by-hashtag")
     @ResponseStatus(code = HttpStatus.OK)
     public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag, Pageable pageable){
         return findMatePostService.listByHashtag(hashtag,pageable);
     }
 
-    @GetMapping("/find-mate-post/by-contents-page")
+    @GetMapping("/find-mate-post/by-title")
     @ResponseStatus(code = HttpStatus.OK)
+
     public ListByContentsResponse listByContents(@RequestParam("contents")String contents, Pageable pageable){
         return findMatePostService.listByContents(contents,pageable);
     }
