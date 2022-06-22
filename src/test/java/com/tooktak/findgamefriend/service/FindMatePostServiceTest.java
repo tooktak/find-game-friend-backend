@@ -13,7 +13,6 @@ import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByTitleWithPageRe
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
@@ -72,7 +71,7 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.ListByGame(game.getId());
+        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.listByGame(game.getId());
         List<Long> ids = findMatePostDTOList.stream().map(d -> d.getId()).collect(Collectors.toList());
 
         assert ids.contains(findMatePost2.getId()) == true;
@@ -118,9 +117,8 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        ListByTitleWithPageResponse response = findMatePostService.ListByTitleWithPage("title", Pageable.ofSize(10));
-        List<Long> ids = response
-                .getFindMatePosts()
+        ListByTitleWithPageResponse response = findMatePostService.listByTitleWithPage("title", Pageable.ofSize(10));
+        List<Long> ids = response.getFindMatePosts()
                 .stream()
                 .map(f -> f.getId())
                 .collect(Collectors.toList());
@@ -169,7 +167,7 @@ class FindMatePostServiceTest {
 
         findMatePost2 = findMatePostRepository.save(findMatePost2);
 
-        ListByHashtagResponse response = findMatePostService.ListByHashtag("hashtag", Pageable.ofSize(10));
+        ListByHashtagResponse response = findMatePostService.listByHashtag("hashtag", Pageable.ofSize(10));
         List<Long> ids = response.getFindMatePostDTOS()
                 .stream()
                 .map(f -> f.getId())
@@ -204,7 +202,7 @@ class FindMatePostServiceTest {
 
         findMatePost = findMatePostRepository.save(findMatePost);
 
-        ListByContentsResponse response = findMatePostService.ListByContents(
+        ListByContentsResponse response = findMatePostService.listByContents(
                 "conten",
                 Pageable.ofSize(10)
         );

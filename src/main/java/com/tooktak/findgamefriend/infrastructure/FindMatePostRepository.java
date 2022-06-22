@@ -13,8 +13,11 @@ import java.util.List;
 public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long> {
     List<FindMatePost> getByGame(Game game);
 
-    @Query("select f from Game as f where f.gameTitle like CONCAT('%',:gameTitle,'%')")
-    Page<Game> getByGameTitle(@Param("gameTitle") String title, Pageable pageable);
+    @Query("select f from FindMatePost as f where f.game.id = :id")
+    Page<FindMatePost> getByGameId(@Param("id") Long Id, Pageable pageable);
+
+    @Query("select f from FindMatePost as f where f.game.title like CONCAT('%',:gameTitle,'%')")
+    Page<FindMatePost> getByGameTitle(@Param("gameTitle") String gameTitle, Pageable pageable);
 
     @Query("select f from FindMatePost as f where f.hashtag like CONCAT('%',:hashtag,'%')")
     Page<FindMatePost> getByHashtagWithPage(@Param("hashtag") String hashtag,Pageable pageable);

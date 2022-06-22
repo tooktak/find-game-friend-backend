@@ -5,30 +5,30 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public class ListByGameResponse {
-    private List<FindMatePostDTO> findMatePostDTOS;
+    private List<FindMatePostDTO> findMatePostDTOs;
     private Long totalElements;
-    private Integer totalpages;
+    private Integer totalPages;
     private Pageable pageable;
 
-    public ListByGameResponse(List<FindMatePostDTO> findMatePostDTOS, Long totalElements, Integer totalpages, Pageable pageable) {
-        this.findMatePostDTOS = findMatePostDTOS;
+    public ListByGameResponse(List<FindMatePostDTO> findMatePostDTOs, Long totalElements, Integer totalpages, Pageable pageable) {
+        this.findMatePostDTOs = findMatePostDTOs;
         this.totalElements = totalElements;
-        this.totalpages = totalpages;
+        this.totalPages = totalpages;
         this.pageable = pageable;
     }
 
     public ListByGameResponse() {}
 
-    public List<FindMatePostDTO> getFindMatePostDTOS() {
-        return findMatePostDTOS;
+    public List<FindMatePostDTO> getFindMatePostDTOs() {
+        return findMatePostDTOs;
     }
 
     public Long getTotalElements() {
         return totalElements;
     }
 
-    public Integer getTotalpages() {
-        return totalpages;
+    public Integer getTotalPages() {
+        return totalPages;
     }
 
     public Pageable getPageable() {
