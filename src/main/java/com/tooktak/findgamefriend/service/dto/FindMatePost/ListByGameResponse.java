@@ -10,10 +10,10 @@ public class ListByGameResponse {
     private Integer totalPages;
     private Pageable pageable;
 
-    public ListByGameResponse(List<FindMatePostDTO> findMatePostDTOs, Long totalElements, Integer totalpages, Pageable pageable) {
+    public ListByGameResponse(List<FindMatePostDTO> findMatePostDTOs, Long totalElements, Integer totalPages, Pageable pageable) {
         this.findMatePostDTOs = findMatePostDTOs;
         this.totalElements = totalElements;
-        this.totalPages = totalpages;
+        this.totalPages = totalPages;
         this.pageable = pageable;
     }
 
