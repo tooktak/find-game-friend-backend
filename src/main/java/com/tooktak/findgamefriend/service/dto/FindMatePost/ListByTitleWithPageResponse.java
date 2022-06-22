@@ -27,8 +27,7 @@ public class ListByTitleWithPageResponse {
         return findMatePosts;
     }
 
-    public ListByTitleWithPageResponse() {
-    }
+    public ListByTitleWithPageResponse() {}
 
     public Long getTotalElements() {
         return totalElements;

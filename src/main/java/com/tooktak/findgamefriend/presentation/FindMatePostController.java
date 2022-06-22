@@ -27,26 +27,25 @@ public class FindMatePostController {
 
     @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
-
-    public ListByGameResponse listByGame(@RequestParam("gameTitle") String gameTitle, Pageable pageable){
-        return findMatePostService.listByGameTitle(gameTitle,pageable);
-
-    @GetMapping("/find-mate-post/by-hashtag")
-    @ResponseStatus(code = HttpStatus.OK)
-    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag, Pageable pageable){
-        return findMatePostService.listByHashtag(hashtag,pageable);
+    public ListByGameResponse listByGame(@RequestParam("gameTitle") String gameTitle, Pageable pageable) {
+        return findMatePostService.listByGameTitle(gameTitle, pageable);
     }
 
-    @GetMapping("/find-mate-post/by-title")
+    @GetMapping("/find-mate-post/by-hashtag-page")
     @ResponseStatus(code = HttpStatus.OK)
+    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag, Pageable pageable){
+        return findMatePostService.listByHashtag(hashtag, pageable);
+    }
 
+    @GetMapping("/find-mate-post/by-contents-page")
+    @ResponseStatus(code = HttpStatus.OK)
     public ListByContentsResponse listByContents(@RequestParam("contents")String contents, Pageable pageable){
-        return findMatePostService.listByContents(contents,pageable);
+        return findMatePostService.listByContents(contents, pageable);
     }
 
     @GetMapping("/find-mate-post/by-title-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByTitleWithPageResponse listByTitleWithPage (@RequestParam("title") String title, Pageable pageable){
-        return findMatePostService.listByTitleWithPage(title,pageable);
+    public ListByTitleWithPageResponse listByTitleWithPage(@RequestParam("title") String title, Pageable pageable){
+        return findMatePostService.listByTitleWithPage(title, pageable);
     }
 }

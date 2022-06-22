@@ -168,7 +168,7 @@ class FindMatePostServiceTest {
         findMatePost2 = findMatePostRepository.save(findMatePost2);
 
         ListByHashtagResponse response = findMatePostService.listByHashtag("hashtag", Pageable.ofSize(10));
-        List<Long> ids = response.getFindMatePostDTOS()
+        List<Long> ids = response.getFindMatePostDTOs()
                 .stream()
                 .map(f -> f.getId())
                 .collect(Collectors.toList());
