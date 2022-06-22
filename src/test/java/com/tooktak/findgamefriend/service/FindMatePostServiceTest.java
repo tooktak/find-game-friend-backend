@@ -6,10 +6,7 @@ import com.tooktak.findgamefriend.domain.Member;
 import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostDTO;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByContentsResponse;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByHashtagResponse;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByTitleWithPageResponse;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,7 +29,7 @@ class FindMatePostServiceTest {
     private FindMatePostRepository findMatePostRepository;
 
     @Test
-    public void testListByGame() {
+    public void testListByGameId() {
         Member member = new Member(
                 "memberId3",
                 "password3",
@@ -71,9 +68,11 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.listByGame(game.getId());
-        List<Long> ids = findMatePostDTOList.stream().map(d -> d.getId()).collect(Collectors.toList());
-
+        ListByGameIdResponse listByGameId = findMatePostService.listByGameId(game.getId(), Pageable.ofSize(10));
+        List<Long> ids = listByGameId.getFindMatePostDTOs()
+                .stream()
+                .map(f -> f.getId())
+                .collect(Collectors.toList());
         assert ids.contains(findMatePost2.getId()) == true;
         assert ids.contains(findMatePost1.getId()) == true;
     }

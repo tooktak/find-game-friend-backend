@@ -25,6 +25,13 @@ public class FindMatePostController {
         return;
     }
 
+    @GetMapping("/find-mate-post/by-id-page")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ListByGameIdResponse listByGameId(@RequestParam("id") Long id, Pageable pageable){
+        return findMatePostService.listByGameId(id, pageable);
+    }
+
+
     @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
     public ListByGameResponse listByGame(@RequestParam("gameTitle") String gameTitle, Pageable pageable) {
@@ -33,13 +40,13 @@ public class FindMatePostController {
 
     @GetMapping("/find-mate-post/by-hashtag-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag")String hashtag, Pageable pageable){
+    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag") String hashtag, Pageable pageable){
         return findMatePostService.listByHashtag(hashtag, pageable);
     }
 
     @GetMapping("/find-mate-post/by-contents-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByContentsResponse listByContents(@RequestParam("contents")String contents, Pageable pageable){
+    public ListByContentsResponse listByContents(@RequestParam("contents") String contents, Pageable pageable){
         return findMatePostService.listByContents(contents, pageable);
     }
 

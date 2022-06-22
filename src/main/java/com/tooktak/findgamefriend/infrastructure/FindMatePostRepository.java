@@ -14,7 +14,7 @@ public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long
     List<FindMatePost> getByGame(Game game);
 
     @Query("select f from FindMatePost as f where f.game.id = :id")
-    Page<FindMatePost> getByGameId(@Param("id") Long Id, Pageable pageable);
+    Page<FindMatePost> getByGameId(@Param("id") Long id, Pageable pageable);
 
     @Query("select f from FindMatePost as f where f.game.title like CONCAT('%',:gameTitle,'%')")
     Page<FindMatePost> getByGameTitle(@Param("gameTitle") String gameTitle, Pageable pageable);

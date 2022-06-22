@@ -1,7 +1,6 @@
 package com.tooktak.findgamefriend.service;
 
 import com.tooktak.findgamefriend.domain.FindMatePost;
-import com.tooktak.findgamefriend.domain.Game;
 import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
@@ -34,14 +33,13 @@ public class FindMatePostService {
         return null;
     }
 
-    public List<FindMatePostDTO> listByGame(Long gameId){
-        Game game = gameRepository.getReferenceById(gameId);
-        List<FindMatePost> findMatePosts = findMatePostRepository.getByGame(game);
-        List<FindMatePostDTO> findMatePostDTOs = findMatePosts
+    public ListByGameIdResponse listByGameId(Long id, Pageable pageable){
+        Page<FindMatePost> byGameId = findMatePostRepository.getByGameId(id, pageable);
+        List<FindMatePostDTO> findMatePostDTOs = byGameId
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
-        return findMatePostDTOs;
+        return new ListByGameIdResponse(findMatePostDTOs, byGameId.getTotalElements(), byGameId.getTotalPages(), byGameId.getPageable());
     }
 
     public ListByGameResponse listByGameTitle(String gameTitle, Pageable pageable){
