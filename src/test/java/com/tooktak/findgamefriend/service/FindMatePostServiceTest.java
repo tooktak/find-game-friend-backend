@@ -29,6 +29,55 @@ class FindMatePostServiceTest {
     private FindMatePostRepository findMatePostRepository;
 
     @Test
+    public void testListByGame() {
+        Member member = new Member(
+                "memberId123",
+                "password3",
+                "email3",
+                "nickname321",
+                "pictureURL3"
+        );
+        member = memberRepository.save(member);
+        Game game = new Game("mapleStory", "url");
+        game = gameRepository.save(game);
+
+
+        FindMatePost findMatePost1 = new FindMatePost(
+                "title1",
+                "contents1",
+                "hashtag1",
+                "kakao1",
+                "discord1",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost1);
+
+        FindMatePost findMatePost2 = new FindMatePost(
+                "title2",
+                "contents2",
+                "hashtag2",
+                "kakao2",
+                "discord2",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost2);
+
+        FindMatePostResponse listByGameId = findMatePostService.listByGame(game, Pageable.ofSize(10));
+        List<Long> ids = listByGameId.getFindMatePosts()
+                .stream()
+                .map(f -> f.getId())
+                .collect(Collectors.toList());
+        assert ids.contains(findMatePost2.getId()) == true;
+        assert ids.contains(findMatePost1.getId()) == true;
+    }
+
+    @Test
     public void testListByGameId() {
         Member member = new Member(
                 "memberId3",
@@ -202,7 +251,7 @@ class FindMatePostServiceTest {
         findMatePost = findMatePostRepository.save(findMatePost);
 
         FindMatePostResponse response = findMatePostService.listByContents(
-                "conten",
+                "contents",
                 Pageable.ofSize(10)
         );
         List<Long> ids = response.getFindMatePosts()
