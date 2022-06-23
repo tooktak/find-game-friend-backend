@@ -68,8 +68,8 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        ListByGameIdResponse listByGameId = findMatePostService.listByGameId(game.getId(), Pageable.ofSize(10));
-        List<Long> ids = listByGameId.getFindMatePostDTOs()
+        FindMatePostResponse listByGameId = findMatePostService.listByGameId(game.getId(), Pageable.ofSize(10));
+        List<Long> ids = listByGameId.getFindMatePosts()
                 .stream()
                 .map(f -> f.getId())
                 .collect(Collectors.toList());
@@ -116,7 +116,7 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        ListByTitleWithPageResponse response = findMatePostService.listByTitleWithPage("title", Pageable.ofSize(10));
+        FindMatePostResponse response = findMatePostService.listByTitleWithPage("title", Pageable.ofSize(10));
         List<Long> ids = response.getFindMatePosts()
                 .stream()
                 .map(f -> f.getId())
@@ -166,8 +166,8 @@ class FindMatePostServiceTest {
 
         findMatePost2 = findMatePostRepository.save(findMatePost2);
 
-        ListByHashtagResponse response = findMatePostService.listByHashtag("hashtag", Pageable.ofSize(10));
-        List<Long> ids = response.getFindMatePostDTOs()
+        FindMatePostResponse response = findMatePostService.listByHashtag("hashtag", Pageable.ofSize(10));
+        List<Long> ids = response.getFindMatePosts()
                 .stream()
                 .map(f -> f.getId())
                 .collect(Collectors.toList());
@@ -201,7 +201,7 @@ class FindMatePostServiceTest {
 
         findMatePost = findMatePostRepository.save(findMatePost);
 
-        ListByContentsResponse response = findMatePostService.listByContents(
+        FindMatePostResponse response = findMatePostService.listByContents(
                 "conten",
                 Pageable.ofSize(10)
         );

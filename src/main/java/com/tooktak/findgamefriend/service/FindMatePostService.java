@@ -1,6 +1,7 @@
 package com.tooktak.findgamefriend.service;
 
 import com.tooktak.findgamefriend.domain.FindMatePost;
+import com.tooktak.findgamefriend.domain.Game;
 import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
@@ -33,48 +34,57 @@ public class FindMatePostService {
         return null;
     }
 
-    public ListByGameIdResponse listByGameId(Long id, Pageable pageable){
+    public FindMatePostResponse listByGame(Game game, Pageable pageable){
+        Page<FindMatePost> byGame = findMatePostRepository.getByGame(game, pageable);
+        List<FindMatePostDTO> findMatePostDTOs = byGame
+                .stream()
+                .map(f -> new FindMatePostDTO(f))
+                .collect(Collectors.toList());
+        return new FindMatePostResponse(findMatePostDTOs, byGame.getTotalElements(), byGame.getTotalPages(), byGame.getPageable());
+    }
+
+    public FindMatePostResponse listByGameId(Long id, Pageable pageable){
         Page<FindMatePost> byGameId = findMatePostRepository.getByGameId(id, pageable);
         List<FindMatePostDTO> findMatePostDTOs = byGameId
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
-        return new ListByGameIdResponse(findMatePostDTOs, byGameId.getTotalElements(), byGameId.getTotalPages(), byGameId.getPageable());
+        return new FindMatePostResponse(findMatePostDTOs, byGameId.getTotalElements(), byGameId.getTotalPages(), byGameId.getPageable());
     }
 
-    public ListByGameResponse listByGameTitle(String gameTitle, Pageable pageable){
+    public FindMatePostResponse listByGameTitle(String gameTitle, Pageable pageable){
        Page<FindMatePost> byGameTitle = findMatePostRepository.getByGameTitle(gameTitle, pageable);
         List<FindMatePostDTO> findMatePostDTOs = byGameTitle
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
-        return new ListByGameResponse(findMatePostDTOs, byGameTitle.getTotalElements(), byGameTitle.getTotalPages(), byGameTitle.getPageable());
+        return new FindMatePostResponse(findMatePostDTOs, byGameTitle.getTotalElements(), byGameTitle.getTotalPages(), byGameTitle.getPageable());
     }
 
-    public ListByHashtagResponse listByHashtag(String hashtag, Pageable pageable){
+    public FindMatePostResponse listByHashtag(String hashtag, Pageable pageable){
         Page<FindMatePost> byHashtag = findMatePostRepository.getByHashtagWithPage(hashtag, pageable);
         List<FindMatePostDTO> findMatePostDTOs = byHashtag
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
-        return new ListByHashtagResponse(findMatePostDTOs, byHashtag.getTotalElements(), byHashtag.getTotalPages(), byHashtag.getPageable());
+        return new FindMatePostResponse(findMatePostDTOs, byHashtag.getTotalElements(), byHashtag.getTotalPages(), byHashtag.getPageable());
     }
 
-    public ListByContentsResponse listByContents(String contents, Pageable pageable){
+    public FindMatePostResponse listByContents(String contents, Pageable pageable){
         Page<FindMatePost> byContents = findMatePostRepository.getByContentsWithPage(contents, pageable);
         List<FindMatePostDTO> findMatePostDTOs = byContents
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
-        return new ListByContentsResponse(findMatePostDTOs, byContents.getTotalElements(), byContents.getTotalPages(), byContents.getPageable());
+        return new FindMatePostResponse(findMatePostDTOs, byContents.getTotalElements(), byContents.getTotalPages(), byContents.getPageable());
     }
 
-    public ListByTitleWithPageResponse listByTitleWithPage(String title, Pageable pageable){
+    public FindMatePostResponse listByTitleWithPage(String title, Pageable pageable){
         Page<FindMatePost> byTitleWithPage = findMatePostRepository.getByTitleWithPage(title, pageable);
         List<FindMatePostDTO> findMatePostDTOs = byTitleWithPage
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
                 .collect(Collectors.toList());
-        return new ListByTitleWithPageResponse(findMatePostDTOs, byTitleWithPage.getTotalElements(), byTitleWithPage.getTotalPages(), byTitleWithPage.getPageable());
+        return new FindMatePostResponse(findMatePostDTOs, byTitleWithPage.getTotalElements(), byTitleWithPage.getTotalPages(), byTitleWithPage.getPageable());
     }
 }

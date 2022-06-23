@@ -1,5 +1,6 @@
 package com.tooktak.findgamefriend.presentation;
 
+import com.tooktak.findgamefriend.domain.Game;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.service.FindMatePostService;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.*;
@@ -25,34 +26,40 @@ public class FindMatePostController {
         return;
     }
 
+    @GetMapping("/find-mate-post/by-game")
+    @ResponseStatus(code = HttpStatus.OK)
+    public FindMatePostResponse listByGamePage(@RequestParam("game")Game game, Pageable pageable){
+        return findMatePostService.listByGame(game, pageable);
+    }
+
     @GetMapping("/find-mate-post/by-id-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByGameIdResponse listByGameId(@RequestParam("id") Long id, Pageable pageable){
+    public FindMatePostResponse listByGameId(@RequestParam("id") Long id, Pageable pageable){
         return findMatePostService.listByGameId(id, pageable);
     }
 
 
     @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByGameResponse listByGame(@RequestParam("gameTitle") String gameTitle, Pageable pageable) {
+    public FindMatePostResponse listByGame(@RequestParam("gameTitle") String gameTitle, Pageable pageable) {
         return findMatePostService.listByGameTitle(gameTitle, pageable);
     }
 
     @GetMapping("/find-mate-post/by-hashtag-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByHashtagResponse listByHashtag(@RequestParam("hashtag") String hashtag, Pageable pageable){
+    public FindMatePostResponse listByHashtag(@RequestParam("hashtag") String hashtag, Pageable pageable){
         return findMatePostService.listByHashtag(hashtag, pageable);
     }
 
     @GetMapping("/find-mate-post/by-contents-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByContentsResponse listByContents(@RequestParam("contents") String contents, Pageable pageable){
+    public FindMatePostResponse listByContents(@RequestParam("contents") String contents, Pageable pageable){
         return findMatePostService.listByContents(contents, pageable);
     }
 
     @GetMapping("/find-mate-post/by-title-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public ListByTitleWithPageResponse listByTitleWithPage(@RequestParam("title") String title, Pageable pageable){
+    public FindMatePostResponse listByTitleWithPage(@RequestParam("title") String title, Pageable pageable){
         return findMatePostService.listByTitleWithPage(title, pageable);
     }
 }

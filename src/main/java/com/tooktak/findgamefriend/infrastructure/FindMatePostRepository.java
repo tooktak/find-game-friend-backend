@@ -11,7 +11,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface FindMatePostRepository extends JpaRepository<FindMatePost, Long> {
-    List<FindMatePost> getByGame(Game game);
+
+    Page<FindMatePost> getByGame(Game game, Pageable pageable);
 
     @Query("select f from FindMatePost as f where f.game.id = :id")
     Page<FindMatePost> getByGameId(@Param("id") Long id, Pageable pageable);

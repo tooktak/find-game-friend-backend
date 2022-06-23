@@ -1,8 +1,10 @@
 package com.tooktak.findgamefriend.presentation;
 
 import com.tooktak.findgamefriend.service.GameService;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostResponse;
 import com.tooktak.findgamefriend.service.dto.game.GameCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
