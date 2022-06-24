@@ -29,7 +29,7 @@ class FindMatePostServiceTest {
     private FindMatePostRepository findMatePostRepository;
 
     @Test
-    public void testListByGame() {
+    public void testListByGameTitle() {
         Member member = new Member(
                 "memberId123",
                 "password3",
@@ -68,7 +68,7 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        FindMatePostResponse listByGameId = findMatePostService.listByGame(game, Pageable.ofSize(10));
+        FindMatePostResponse listByGameId = findMatePostService.listByGameTitle(game.getTitle(), Pageable.ofSize(10));
         List<Long> ids = listByGameId.getFindMatePosts()
                 .stream()
                 .map(f -> f.getId())

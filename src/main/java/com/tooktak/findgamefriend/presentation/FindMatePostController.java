@@ -26,12 +26,6 @@ public class FindMatePostController {
         return;
     }
 
-    @GetMapping("/find-mate-post/by-game")
-    @ResponseStatus(code = HttpStatus.OK)
-    public FindMatePostResponse listByGamePage(@RequestParam("game")Game game, Pageable pageable){
-        return findMatePostService.listByGame(game, pageable);
-    }
-
     @GetMapping("/find-mate-post/by-id-page")
     @ResponseStatus(code = HttpStatus.OK)
     public FindMatePostResponse listByGameId(@RequestParam("id") Long id, Pageable pageable){
@@ -41,8 +35,8 @@ public class FindMatePostController {
 
     @GetMapping("/find-mate-post/by-game-page")
     @ResponseStatus(code = HttpStatus.OK)
-    public FindMatePostResponse listByGame(@RequestParam("gameTitle") String gameTitle, Pageable pageable) {
-        return findMatePostService.listByGameTitle(gameTitle, pageable);
+    public FindMatePostResponse listByGameTitle(@RequestParam("title") String title, Pageable pageable) {
+        return findMatePostService.listByGameTitle(title, pageable);
     }
 
     @GetMapping("/find-mate-post/by-hashtag-page")

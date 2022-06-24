@@ -18,8 +18,8 @@ public class Game extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String thumbnailURL;
 
-    public Game(String gameTitle, String thumbnailURL) {
-        this.title = gameTitle;
+    public Game(String title, String thumbnailURL) {
+        this.title = title;
         this.thumbnailURL = thumbnailURL;
     }
 
