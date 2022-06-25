@@ -34,8 +34,8 @@ public class FindMatePostService {
         return null;
     }
 
-    public FindMatePostResponse listByGameId(Long id, Pageable pageable){
-        Page<FindMatePost> byGameId = findMatePostRepository.getByGameId(id, pageable);
+    public FindMatePostResponse listByGameId(Long gameId, Pageable pageable){
+        Page<FindMatePost> byGameId = findMatePostRepository.getByGame(gameRepository.getReferenceById(gameId), pageable);
         List<FindMatePostDTO> findMatePostDTOs = byGameId
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
@@ -44,7 +44,7 @@ public class FindMatePostService {
     }
 
     public FindMatePostResponse listByGameTitle(String gameTitle, Pageable pageable){
-       Page<FindMatePost> byGameTitle = findMatePostRepository.getByGameTitle(gameTitle, pageable);
+       Page<FindMatePost> byGameTitle = findMatePostRepository.getByGame(gameRepository.getByGameTitle(gameTitle),pageable);
         List<FindMatePostDTO> findMatePostDTOs = byGameTitle
                 .stream()
                 .map(f -> new FindMatePostDTO(f))
