@@ -87,7 +87,7 @@ class FindMatePostServiceTest {
                 "pictureURL3"
         );
         member = memberRepository.save(member);
-        Game game = new Game("mapleStory", "url");
+        Game game = new Game("archeAge", "url");
         game = gameRepository.save(game);
 
 
@@ -136,7 +136,7 @@ class FindMatePostServiceTest {
                 "pictureURL1"
         );
         member = memberRepository.save(member);
-        Game game = new Game("mapleStory", "url");
+        Game game = new Game("suddenAttack", "url");
         game = gameRepository.save(game);
 
         FindMatePost findMatePost1 = new FindMatePost(
@@ -185,7 +185,7 @@ class FindMatePostServiceTest {
                 "pictureURL"
         );
         member = memberRepository.save(member);
-        Game game = new Game("mapleStory", "url");
+        Game game = new Game("LoL", "url");
         game = gameRepository.save(game);
 
 
@@ -234,7 +234,7 @@ class FindMatePostServiceTest {
                 "picURL"
         );
         member = memberRepository.save(member);
-        Game game = new Game("archeAge","archeURL");
+        Game game = new Game("battleGround","archeURL");
         game = gameRepository.save(game);
 
         FindMatePost findMatePost = new FindMatePost(

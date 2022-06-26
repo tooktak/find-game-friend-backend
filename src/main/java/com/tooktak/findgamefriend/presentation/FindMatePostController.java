@@ -1,6 +1,5 @@
 package com.tooktak.findgamefriend.presentation;
 
-import com.tooktak.findgamefriend.domain.Game;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.service.FindMatePostService;
 import com.tooktak.findgamefriend.service.dto.FindMatePost.*;

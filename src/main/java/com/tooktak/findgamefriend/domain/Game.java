@@ -3,7 +3,6 @@ package com.tooktak.findgamefriend.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"title"}))
 public class Game extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
