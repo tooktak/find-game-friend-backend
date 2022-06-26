@@ -6,14 +6,10 @@ import com.tooktak.findgamefriend.domain.Member;
 import com.tooktak.findgamefriend.infrastructure.FindMatePostRepository;
 import com.tooktak.findgamefriend.infrastructure.GameRepository;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.FindMatePostDTO;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByContentsResponse;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByHashtagResponse;
-import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByTitleWithPageResponse;
+import com.tooktak.findgamefriend.service.dto.FindMatePost.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
@@ -33,12 +29,12 @@ class FindMatePostServiceTest {
     private FindMatePostRepository findMatePostRepository;
 
     @Test
-    public void testListByGame() {
+    public void testListByGameTitle() {
         Member member = new Member(
-                "memberId3",
+                "memberId123",
                 "password3",
                 "email3",
-                "nickname3",
+                "nickname321",
                 "pictureURL3"
         );
         member = memberRepository.save(member);
@@ -72,9 +68,60 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        List<FindMatePostDTO> findMatePostDTOList = findMatePostService.listByGame(game.getId());
-        List<Long> ids = findMatePostDTOList.stream().map(d -> d.getId()).collect(Collectors.toList());
+        FindMatePostResponse listByGameId = findMatePostService.listByGameTitle(game.getTitle(), Pageable.ofSize(10));
+        List<Long> ids = listByGameId.getFindMatePosts()
+                .stream()
+                .map(f -> f.getId())
+                .collect(Collectors.toList());
+        assert ids.contains(findMatePost2.getId()) == true;
+        assert ids.contains(findMatePost1.getId()) == true;
+    }
 
+    @Test
+    public void testListByGameId() {
+        Member member = new Member(
+                "memberId3",
+                "password3",
+                "email3",
+                "nickname3",
+                "pictureURL3"
+        );
+        member = memberRepository.save(member);
+        Game game = new Game("archeAge", "url");
+        game = gameRepository.save(game);
+
+
+        FindMatePost findMatePost1 = new FindMatePost(
+                "title1",
+                "contents1",
+                "hashtag1",
+                "kakao1",
+                "discord1",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost1);
+
+        FindMatePost findMatePost2 = new FindMatePost(
+                "title2",
+                "contents2",
+                "hashtag2",
+                "kakao2",
+                "discord2",
+                LocalDateTime.now(),
+                member,
+                game
+        );
+
+        findMatePostRepository.save(findMatePost2);
+
+        FindMatePostResponse listByGameId = findMatePostService.listByGameId(game.getId(), Pageable.ofSize(10));
+        List<Long> ids = listByGameId.getFindMatePosts()
+                .stream()
+                .map(f -> f.getId())
+                .collect(Collectors.toList());
         assert ids.contains(findMatePost2.getId()) == true;
         assert ids.contains(findMatePost1.getId()) == true;
     }
@@ -89,7 +136,7 @@ class FindMatePostServiceTest {
                 "pictureURL1"
         );
         member = memberRepository.save(member);
-        Game game = new Game("mapleStory", "url");
+        Game game = new Game("suddenAttack", "url");
         game = gameRepository.save(game);
 
         FindMatePost findMatePost1 = new FindMatePost(
@@ -118,9 +165,8 @@ class FindMatePostServiceTest {
 
         findMatePostRepository.save(findMatePost2);
 
-        ListByTitleWithPageResponse response = findMatePostService.listByTitle("title", Pageable.ofSize(10));
-        List<Long> ids = response
-                .getFindMatePosts()
+        FindMatePostResponse response = findMatePostService.listByTitleWithPage("title", Pageable.ofSize(10));
+        List<Long> ids = response.getFindMatePosts()
                 .stream()
                 .map(f -> f.getId())
                 .collect(Collectors.toList());
@@ -139,7 +185,7 @@ class FindMatePostServiceTest {
                 "pictureURL"
         );
         member = memberRepository.save(member);
-        Game game = new Game("mapleStory", "url");
+        Game game = new Game("LoL", "url");
         game = gameRepository.save(game);
 
 
@@ -169,8 +215,8 @@ class FindMatePostServiceTest {
 
         findMatePost2 = findMatePostRepository.save(findMatePost2);
 
-        ListByHashtagResponse response = findMatePostService.listByHashtag("hashtag", Pageable.ofSize(10));
-        List<Long> ids = response.getFindMatePostDTOS()
+        FindMatePostResponse response = findMatePostService.listByHashtag("hashtag", Pageable.ofSize(10));
+        List<Long> ids = response.getFindMatePosts()
                 .stream()
                 .map(f -> f.getId())
                 .collect(Collectors.toList());
@@ -188,7 +234,7 @@ class FindMatePostServiceTest {
                 "picURL"
         );
         member = memberRepository.save(member);
-        Game game = new Game("archeAge","archeURL");
+        Game game = new Game("battleGround","archeURL");
         game = gameRepository.save(game);
 
         FindMatePost findMatePost = new FindMatePost(
@@ -204,8 +250,8 @@ class FindMatePostServiceTest {
 
         findMatePost = findMatePostRepository.save(findMatePost);
 
-        ListByContentsResponse response = findMatePostService.listByContents(
-                "conten",
+        FindMatePostResponse response = findMatePostService.listByContents(
+                "contents",
                 Pageable.ofSize(10)
         );
         List<Long> ids = response.getFindMatePosts()
