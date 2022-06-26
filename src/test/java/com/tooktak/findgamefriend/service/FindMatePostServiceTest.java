@@ -1,5 +1,6 @@
 package com.tooktak.findgamefriend.service;
 
+import com.tooktak.findgamefriend.domain.AuthProvider;
 import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.domain.Game;
 import com.tooktak.findgamefriend.domain.Member;
@@ -13,7 +14,6 @@ import com.tooktak.findgamefriend.service.dto.FindMatePost.ListByTitleWithPageRe
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
@@ -35,12 +35,11 @@ class FindMatePostServiceTest {
     @Test
     public void testListByGame() {
         Member member = new Member(
-                "memberId3",
                 "password3",
                 "email3",
                 "nickname3",
-                "pictureURL3"
-        );
+                "pictureURL3",
+                AuthProvider.google);
         member = memberRepository.save(member);
         Game game = new Game("mapleStory", "url");
         game = gameRepository.save(game);
@@ -82,12 +81,11 @@ class FindMatePostServiceTest {
     @Test
     public void testListByTitle() {
         Member member = new Member(
-                "memberId1",
                 "password1",
                 "email1",
                 "nickname1",
-                "pictureURL1"
-        );
+                "pictureURL1",
+                AuthProvider.google);
         member = memberRepository.save(member);
         Game game = new Game("mapleStory", "url");
         game = gameRepository.save(game);
@@ -132,12 +130,11 @@ class FindMatePostServiceTest {
     @Test
     public void testListByHashtag() {
         Member member = new Member(
-                "member3211",
                 "password",
                 "email",
                 "nickname1231",
-                "pictureURL"
-        );
+                "pictureURL",
+                AuthProvider.google);
         member = memberRepository.save(member);
         Game game = new Game("mapleStory", "url");
         game = gameRepository.save(game);
@@ -182,11 +179,10 @@ class FindMatePostServiceTest {
     public void testListByContents(){
         Member member = new Member(
                 "mem123",
-                "mem123",
                 "email@google.com",
                 "hiHello",
-                "picURL"
-        );
+                "picURL",
+                AuthProvider.google);
         member = memberRepository.save(member);
         Game game = new Game("archeAge","archeURL");
         game = gameRepository.save(game);

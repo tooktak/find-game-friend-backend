@@ -12,6 +12,12 @@ services:
       MYSQL_USERNAME: test
       MYSQL_PASSWORD: test
       MYSQL_URL: jdbc:mysql://mysql:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf8
+      OAUTH2_GOOGLE_CLIENT_ID: GOOGLE_CLIENT_ID
+      OAUTH2_GOOGLE_CLIENT_SECRET: GOOGLE_CLIENT_SECRET
+      APP_AUTH_TOKEN_SECRET: local_secret_token
+      APP_AUTH_TOKEN_EXPIRATION_MSEC: 864000000
+      APP_CORS_ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8080
+      APP_OAUTH2_AUTHORIZED_REDRIECT_URI: http://localhost:3000/oauth2/redirect
     depends_on:
       - mysql
 
@@ -19,6 +25,9 @@ services:
     # https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/#drop-in-compatibility-of-specific-mariadb-versions
     image: mariadb:10.4
     restart: always
+    command:
+      - --character-set-server=utf8
+      - --collation-server=utf8_general_ci
     profiles: [test, instant]
     environment:
       MYSQL_ROOT_PASSWORD: test

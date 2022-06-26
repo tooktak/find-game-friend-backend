@@ -1,5 +1,6 @@
 package com.tooktak.findgamefriend.infrastructure;
 
+import com.tooktak.findgamefriend.domain.AuthProvider;
 import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.domain.Game;
 import com.tooktak.findgamefriend.domain.Member;
@@ -21,12 +22,11 @@ class FindMatePostRepositoryTest {
     @Test
     public void TestFindMateNoCascadingWithMember() {
         Member member = new Member(
-                "memberId",
                 "password",
                 "email",
                 "nickname",
-                "pictureURL"
-        );
+                "pictureURL",
+                AuthProvider.google);
 
         member = memberRepository.save(member);
 
@@ -53,12 +53,11 @@ class FindMatePostRepositoryTest {
     @Test
     public void TestFindMateNoCascadingWithGame() {
         Member member = new Member(
-                "memberId",
                 "password",
                 "email",
                 "nickname",
-                "pictureURL"
-        );
+                "pictureURL",
+                AuthProvider.google);
 
         member = memberRepository.save(member);
 
@@ -81,6 +80,4 @@ class FindMatePostRepositoryTest {
 
         assert findMatePostRepository.getReferenceById(findMatePost.getId()) != null;
     }
-
-
 }

@@ -3,6 +3,8 @@ package com.tooktak.findgamefriend.infrastructure;
 import com.tooktak.findgamefriend.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    Member getByMemberId(String id);
+    Optional<Member> findByEmail(String email);
 }
