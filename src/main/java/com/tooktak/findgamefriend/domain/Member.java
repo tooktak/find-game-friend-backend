@@ -9,27 +9,27 @@ public class Member extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 100)
-    private String memberId;
+    @Column(nullable = false, unique = true)
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 100)
-    private String email;
-
-    @Column(nullable = false, length = 20, unique = true)
-    private String nickName;
+    @Column(nullable = false)
+    private String name;
 
     @Column(columnDefinition = "TEXT")
     private String pictureURL;
 
-    public Member(String memberId, String password, String email, String nickName, String pictureURL) {
-        this.memberId = memberId;
+    @Enumerated(EnumType.STRING)
+    private AuthProvider authProvider;
+
+    public Member(String password, String email, String name, String pictureURL, AuthProvider authProvider) {
         this.password = password;
         this.email = email;
-        this.nickName = nickName;
+        this.name = name;
         this.pictureURL = pictureURL;
+        this.authProvider = authProvider;
     }
 
     public Member() {
@@ -40,10 +40,6 @@ public class Member extends BaseEntity {
         return id;
     }
 
-    public String getMemberId() {
-        return memberId;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -52,12 +48,16 @@ public class Member extends BaseEntity {
         return email;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getName() {
+        return name;
     }
 
     public String getPictureURL() {
         return pictureURL;
+    }
+
+    public AuthProvider getAuthProvider() {
+        return authProvider;
     }
 }
 

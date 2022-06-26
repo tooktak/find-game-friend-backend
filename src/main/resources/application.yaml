@@ -8,5 +8,45 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create-drop
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${OAUTH2_GOOGLE_CLIENT_ID}
+            clientSecret: ${OAUTH2_GOOGLE_CLIENT_SECRET}
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+#          facebook:
+#            clientId: TODO
+#            clientSecret: TODO
+#            redirectUri: "TODO"
+#            scope:
+#              - email
+#              - public_profile
+#          github:
+#            clientId: TODO
+#            clientSecret: TODO
+#            redirectUri: "TODO"
+#            scope:
+#              - user:email
+#              - read:user
+#        provider:
+#          facebook:
+#            authorizationUri: TODO
+#            tokenUri: TODO
+#            userInfoUri: TODO
 server:
   port: 8080
+
+
+app:
+  auth:
+    tokenSecret: ${APP_AUTH_TOKEN_SECRET}
+    tokenExpirationMsec: ${APP_AUTH_TOKEN_EXPIRATION_MSEC}
+  cors:
+    allowedOrigins: ${APP_CORS_ALLOWED_ORIGINS}
+  oauth2:
+    authorizedRedirectUri: ${APP_OAUTH2_AUTHORIZED_REDRIECT_URI}

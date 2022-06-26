@@ -1,5 +1,6 @@
 package com.tooktak.findgamefriend.service;
 
+import com.tooktak.findgamefriend.domain.AuthProvider;
 import com.tooktak.findgamefriend.domain.FindMatePost;
 import com.tooktak.findgamefriend.domain.Game;
 import com.tooktak.findgamefriend.domain.Member;
@@ -31,12 +32,11 @@ class FindMatePostServiceTest {
     @Test
     public void testListByGameTitle() {
         Member member = new Member(
-                "memberId123",
                 "password3",
                 "email3",
-                "nickname321",
-                "pictureURL3"
-        );
+                "nickname3",
+                "pictureURL3",
+                AuthProvider.google);
         member = memberRepository.save(member);
         Game game = new Game("mapleStory", "url");
         game = gameRepository.save(game);
@@ -129,12 +129,11 @@ class FindMatePostServiceTest {
     @Test
     public void testListByTitle() {
         Member member = new Member(
-                "memberId1",
                 "password1",
                 "email1",
                 "nickname1",
-                "pictureURL1"
-        );
+                "pictureURL1",
+                AuthProvider.google);
         member = memberRepository.save(member);
         Game game = new Game("suddenAttack", "url");
         game = gameRepository.save(game);
@@ -178,12 +177,11 @@ class FindMatePostServiceTest {
     @Test
     public void testListByHashtag() {
         Member member = new Member(
-                "member3211",
                 "password",
                 "email",
                 "nickname1231",
-                "pictureURL"
-        );
+                "pictureURL",
+                AuthProvider.google);
         member = memberRepository.save(member);
         Game game = new Game("LoL", "url");
         game = gameRepository.save(game);
@@ -228,11 +226,10 @@ class FindMatePostServiceTest {
     public void testListByContents(){
         Member member = new Member(
                 "mem123",
-                "mem123",
                 "email@google.com",
                 "hiHello",
-                "picURL"
-        );
+                "picURL",
+                AuthProvider.google);
         member = memberRepository.save(member);
         Game game = new Game("battleGround","archeURL");
         game = gameRepository.save(game);

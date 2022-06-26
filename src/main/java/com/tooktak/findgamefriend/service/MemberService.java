@@ -1,5 +1,6 @@
 package com.tooktak.findgamefriend.service;
 
+import com.tooktak.findgamefriend.domain.AuthProvider;
 import com.tooktak.findgamefriend.domain.Member;
 import com.tooktak.findgamefriend.infrastructure.MemberRepository;
 import com.tooktak.findgamefriend.service.dto.member.MemberRegisterRequest;
@@ -20,12 +21,11 @@ public class MemberService {
     @Transactional
     public Member register(MemberRegisterRequest req) {
         Member member = new Member(
-                req.getMemberId(),
                 req.getPassword(),
                 req.getEmail(),
                 req.getNickName(),
-                req.getPictureURL()
-        );
+                req.getPictureURL(),
+                AuthProvider.google); // TODO: 리팩터
         return memberRepository.save(member);
     }
 }

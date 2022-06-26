@@ -13,11 +13,11 @@ class MemberServiceTest {
 
     @Test
     void register() {
+        // TODO: 리팩터
         Member member = memberService.register(new MemberRegisterRequest("qwe123", "qweqwe123", "qwe23@gmail.com", "ewq123", "tktktkriifooq12weq"));
-        assert member.getMemberId() == "qwe123";
         assert member.getPassword() == "qweqwe123";
         assert member.getEmail() == "qwe23@gmail.com";
-        assert member.getNickName() == "ewq123";
+        assert member.getName() == "ewq123";
         assert member.getPictureURL() == "tktktkriifooq12weq";
     }
 }

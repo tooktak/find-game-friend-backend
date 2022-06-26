@@ -19,7 +19,7 @@ public class FindMatePostDTO {
         this.hashtag = findMatePost.getHashtag();
         this.kakaoLink = findMatePost.getKakaoLink();
         this.discordLink = findMatePost.getDiscordLink();
-        this.nickname = findMatePost.getMember().getNickName();
+        this.nickname = findMatePost.getMember().getName();
         this.gameTitle = findMatePost.getGame().getTitle();
     }
 
