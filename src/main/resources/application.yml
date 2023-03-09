@@ -1,0 +1,23 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/test
+        username: test
+        password: test
+    jpa:
+        hibernate:
+        ddl-auto: create
+        generate-ddl: true
+        show-sql: true
+        database: mysql
+    server:
+        port: 3000
+    thymeleaf:
+        enabled: true
+
+security:
+    jwt:
+        token:
+            secret-key: 'Vu6WXrg3t9'
+            expire-length: '3600000'
+
