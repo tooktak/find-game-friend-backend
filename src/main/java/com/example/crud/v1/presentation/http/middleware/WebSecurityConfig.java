@@ -1,6 +1,5 @@
-package com.example.crud.v1.application.Oauth;
+package com.example.crud.v1.presentation.http.middleware;
 
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;

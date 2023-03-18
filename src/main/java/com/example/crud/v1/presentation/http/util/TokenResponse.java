@@ -1,4 +1,4 @@
-package com.example.crud.v1.application.Oauth;
+package com.example.crud.v1.presentation.http.util;
 
 public class TokenResponse {
 

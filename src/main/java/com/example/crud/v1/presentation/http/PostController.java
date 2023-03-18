@@ -1,4 +1,4 @@
-package com.example.crud.v1.presentation;
+package com.example.crud.v1.presentation.http;
 
 import com.example.crud.v1.application.Service.PostService;
 import com.example.crud.v1.application.dto.PostDto.PostCreateRequest;

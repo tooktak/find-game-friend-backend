@@ -21,11 +21,14 @@ public class User {
     @Column(nullable = false, length = 20,unique = true)
     private String nickName;
 
-    public User(String email, String name, String accessToken) {
-
+    public User() {
     }
 
-    public User() {
+    public User(String eMail, String password) {
+        this.userName = eMail;
+        this.password = password;
+        this.eMail = eMail;
+        this.nickName = eMail;
     }
 
     public Long getId() {
