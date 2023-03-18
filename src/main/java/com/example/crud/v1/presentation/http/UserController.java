@@ -30,14 +30,8 @@ public class UserController {
         if (user.isPresent()) {
             return new TokenResponse(this.jwtTokenProvider.createToken(user.get().getId()), "test");
         }
+        User newUser = userService.register(userCreateRequest);
         // create new user and return JWT if non-exists user
-        return new TokenResponse(
-                this.jwtTokenProvider.createToken(
-                        userService.register(
-                                userCreateRequest
-                        ).getId()
-                ),
-                "test"
-        );
+        return new TokenResponse(this.jwtTokenProvider.createToken(newUser.getId()), "test");
     }
 }
