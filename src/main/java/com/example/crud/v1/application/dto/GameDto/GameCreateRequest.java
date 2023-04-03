@@ -2,8 +2,8 @@ package com.example.crud.v1.application.dto.GameDto;
 
 public class GameCreateRequest {
     private Long id;
-    private String gameName;
-    private String thumbNail;
+    private String title;
+    private String thumbnailURL;
 
     public Long getId() {
         return id;
@@ -13,25 +13,25 @@ public class GameCreateRequest {
         this.id = id;
     }
 
-    public String getGameName() {
-        return gameName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getThumbNail() {
-        return thumbNail;
+    public String getThumbnailURL() {
+        return thumbnailURL;
     }
 
-    public void setThumbNail(String thumbNail) {
-        this.thumbNail = thumbNail;
+    public void setThumbnailURL(String thumbnailURL) {
+        this.thumbnailURL = thumbnailURL;
     }
 
     public GameCreateRequest(Long id, String gameName, String thumbNail) {
         this.id = id;
-        this.gameName = gameName;
-        this.thumbNail = thumbNail;
+        this.title = gameName;
+        this.thumbnailURL = thumbNail;
     }
 }

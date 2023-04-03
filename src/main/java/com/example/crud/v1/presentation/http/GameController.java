@@ -2,17 +2,23 @@ package com.example.crud.v1.presentation.http;
 
 import com.example.crud.v1.application.Service.GameService;
 import com.example.crud.v1.application.dto.GameDto.GameCreateRequest;
-import com.example.crud.v1.domain.Game;
+import com.example.crud.v1.application.dto.GameDto.GameReadResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/")
 public class GameController {
 
     @Autowired
     private GameService gameService;
+
+    @GetMapping("/game")
+    public List<GameReadResponse> AllGame(){
+        return gameService.getAll();
+    }
 
     @PostMapping("/game/create")
     public Long createGame(@RequestParam GameCreateRequest createRequest){
@@ -24,9 +30,8 @@ public class GameController {
         return gameService.delete(gameName);
     }
 
-    @GetMapping("/post/GameTitle")
-    public List<Game> findByGame(@PathVariable(value = "gameTitle")String gameTitle){
+    @GetMapping("/game/GameTitle")
+    public List findByGame(@PathVariable(value = "gameTitle")String gameTitle){
         return gameService.findByGameName(gameTitle);
     }
-
 }

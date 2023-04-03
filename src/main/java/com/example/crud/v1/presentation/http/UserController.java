@@ -28,10 +28,10 @@ public class UserController {
         // return JWT if exists user
         Optional<User> user = userService.findUser(userCreateRequest.getEmail());
         if (user.isPresent()) {
-            return new TokenResponse(this.jwtTokenProvider.createToken(user.get().getId()), "test");
+            return new TokenResponse(this.jwtTokenProvider.createToken(user.get().getId()), "bearer");
         }
         User newUser = userService.register(userCreateRequest);
         // create new user and return JWT if non-exists user
-        return new TokenResponse(this.jwtTokenProvider.createToken(newUser.getId()), "test");
+        return new TokenResponse(this.jwtTokenProvider.createToken(newUser.getId()), "bearer");
     }
 }

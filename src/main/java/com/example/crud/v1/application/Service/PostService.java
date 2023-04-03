@@ -23,7 +23,7 @@ public class PostService {
     }
 
     public Long create(final PostCreateRequest r) {
-        Post p = new Post(r.getTitle(), r.getContent());
+        Post p = new Post(r.getTitle(), r.getContents(),r.getKakaoLink(),r.getDiscordLink());
         postRepository.save(p);
         return postRepository.save(p).getId();
     }
@@ -31,7 +31,9 @@ public class PostService {
     public Long update(final PostUpdateRequest u) {
         Post p = postRepository.getById(u.getId());
         p.setTitle(u.getTitle());
-        p.setContent(u.getContent());
+        p.setContents(u.getContents());
+        p.setKakaoLink(u.getKakaoLink());
+        p.setDiscordLink(u.getDiscordLink());
         p = postRepository.save(p);
         return p.getId();
     }
@@ -47,20 +49,6 @@ public class PostService {
         List<Post> po = postRepository.findByTitle(title);
         return po;
     }
-
-    /*public List<Post> findAll(final String title){
-        List<Post> postList = postRepository.findAllCard(title);
-        return postList;
-    }*/
-
-    /*public List<Post> findByHashTag(final String hashTag){
-        List<Post> post = postRepository.findByHashTag(hashTag);
-        return post;
-    }*/
-    /*public List<Post> findByPostWriting(final String postWriting){
-        List<Post> post = postRepository.findByPostWriting(postWriting);
-        return post;
-    }*/
     public List<Long> deleteByTitle(final String title) {
         // 검색한 것에 대한 넘버값을 알아낸 후 삭제   리스트 순회해서 포스트 값 딜리트
         List<Post> postList = postRepository.findByTitle(title);

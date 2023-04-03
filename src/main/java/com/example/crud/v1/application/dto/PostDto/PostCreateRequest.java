@@ -2,29 +2,33 @@ package com.example.crud.v1.application.dto.PostDto;
 
 public class PostCreateRequest {
     private String title;
-    private String content;
-
-    public PostCreateRequest(String title, String contents) {
-        this.title = title;
-        this.content = contents;
-    }
+    private String contents;
+    private String kakaoLink;
+    private String discordLink;
 
     public PostCreateRequest() {
+    }
+
+    public PostCreateRequest(String title, String content, String kakaoLink, String discordLink) {
+        this.title = title;
+        this.contents = content;
+        this.kakaoLink = kakaoLink;
+        this.discordLink = discordLink;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getContents() {
+        return contents;
     }
 
-    public String getContent() {
-        return content;
+    public String getKakaoLink() {
+        return kakaoLink;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public String getDiscordLink() {
+        return discordLink;
     }
 }

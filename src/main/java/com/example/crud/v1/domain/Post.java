@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,37 +13,62 @@ public class Post {
     private String title;
 
     @Column
-    private String content;
+    private String contents;
 
-    public Post(String title, String content) {
+   @Column
+    private String kakaoLink;
+
+   @Column
+    private String discordLink;
+
+    public Post(String title, String content, String kakaoLink, String discordLink) {
         this.title = title;
-        this.content = content;
+        this.contents = content;
+        this.kakaoLink = kakaoLink;
+        this.discordLink = discordLink;
     }
 
     public Post() {
+
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String content) {
+        this.contents = content;
+    }
+
+    public String getKakaoLink() {
+        return kakaoLink;
+    }
+
+    public void setKakaoLink(String kakaoLink) {
+        this.kakaoLink = kakaoLink;
+    }
+
+    public String getDiscordLink() {
+        return discordLink;
+    }
+
+    public void setDiscordLink(String discordLink) {
+        this.discordLink = discordLink;
     }
 }

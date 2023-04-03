@@ -9,6 +9,8 @@ public interface GameRepository extends JpaRepository<Game,Long> {
 
     @Override
     Game getById(Long aLong);
-    List<Game> findByGameName(String gameName);
-    Game getByGameName(String gameName);
+
+    List<Game> findByTitle(String title);
+
+    Game getByTitle(String title);
 }
