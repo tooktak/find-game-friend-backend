@@ -19,11 +19,11 @@ public class PostService {
     private PostRepository postRepository;
 
     public List<PostReadResponse> getAll(){
-        return postRepository.findAll().stream().map(p->PostReadResponse.fromEntity(p)).collect(Collectors.toList());
+        return postRepository.findAll().stream().map(p-> PostReadResponse.fromEntity(p)).collect(Collectors.toList());
     }
 
     public Long create(final PostCreateRequest r) {
-        Post p = new Post(r.getTitle(), r.getContents(),r.getKakaoLink(),r.getDiscordLink());
+        Post p = new Post(r.getTitle(), r.getContents(),r.getKakaoLink(),r.getDiscordLink(),r.getMemberId(),r.getGameId());
         postRepository.save(p);
         return postRepository.save(p).getId();
     }

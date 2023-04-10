@@ -20,4 +20,5 @@ security:
         token:
             secret-key: 'Vu6WXrg3t9'
             expire-length: '3600000'
+upload-dir: src/main/resources/templates/image
 

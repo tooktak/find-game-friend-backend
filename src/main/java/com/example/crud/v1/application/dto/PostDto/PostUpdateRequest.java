@@ -6,6 +6,7 @@ public class PostUpdateRequest {
     private String contents;
     private String kakaoLink;
     private String discordLink;
+    private String gameId;
 
     public Long getId() {
         return id;
@@ -27,14 +28,21 @@ public class PostUpdateRequest {
         return discordLink;
     }
 
+    public String getGameId() {
+        return gameId;
+    }
+
+    public PostUpdateRequest(Long id, String title, String contents, String kakaoLink, String discordLink, String gameId) {
+        this.id = id;
+        this.title = title;
+        this.contents = contents;
+        this.kakaoLink = kakaoLink;
+        this.discordLink = discordLink;
+        this.gameId = gameId;
+    }
+
     public PostUpdateRequest() {
     }
 
-    public PostUpdateRequest(Long id, String title, String content, String kakaoLink, String discordLink) {
-        this.id = id;
-        this.title = title;
-        this.contents = content;
-        this.kakaoLink = kakaoLink;
-        this.discordLink = discordLink;
-    }
+
 }

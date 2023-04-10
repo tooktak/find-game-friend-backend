@@ -8,6 +8,38 @@ public class PostReadResponse {
     private String contents;
     private String kakaoLink;
     private String discordLink;
+    private String memberId;
+    private String gameId;
+
+    public PostReadResponse(Long id, String title, String contents, String kakaoLink, String discordLink, String memberId, String gameId) {
+        this.id = id;
+        this.title = title;
+        this.contents = contents;
+        this.kakaoLink = kakaoLink;
+        this.discordLink = discordLink;
+        this.memberId = memberId;
+        this.gameId = gameId;
+    }
+
+    public static PostReadResponse fromEntity(Post p) {
+        return new PostReadResponse(
+                p.getId(),
+                p.getTitle(),
+                p.getContents(),
+                p.getKakaoLink(),
+                p.getDiscordLink(),
+                p.getMemberId(),
+                p.getGameId()
+        );
+    }
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public String getGameId() {
+        return gameId;
+    }
 
     public Long getId() {
         return id;
@@ -31,22 +63,5 @@ public class PostReadResponse {
 
     public PostReadResponse() {
     }
-
-    public PostReadResponse(Long id, String title, String content, String kakaoLink, String discordLink) {
-        this.id = id;
-        this.title = title;
-        this.contents = content;
-        this.kakaoLink = kakaoLink;
-        this.discordLink = discordLink;
-    }
-
-    public static PostReadResponse fromEntity(Post post) {
-        return new PostReadResponse(
-                post.getId(),
-                post.getTitle(),
-                post.getContents(),
-                post.getKakaoLink(),
-                post.getDiscordLink()
-        );
-    }
 }
+
