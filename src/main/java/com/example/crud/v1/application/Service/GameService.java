@@ -3,6 +3,7 @@ package com.example.crud.v1.application.Service;
 import com.example.crud.v1.application.dto.GameDto.GameCreateRequest;
 import com.example.crud.v1.application.dto.GameDto.GameReadResponse;
 import com.example.crud.v1.domain.Game;
+import com.example.crud.v1.domain.Post;
 import com.example.crud.v1.infrastructure.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,11 @@ public class GameService {
         Game game = new Game(create.getTitle(),create.getThumbnailURL());
         gameRepository.save(game);
         return gameRepository.save(game).getId();
+    }
+
+    public List<Game> findByGameTitle(final String gameTitle) {
+        List<Game> GameTitle = gameRepository.findByTitleContaining(gameTitle);
+        return GameTitle;
     }
 
     public String delete (final String gameName){

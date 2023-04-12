@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `oauth_refresh_token`
     `authentication` BLOB         NULL
     );*/
 
-CREATE TABLE IF NOT EXISTS `oauth_client_details`
+/* CREATE TABLE IF NOT EXISTS `oauth_client_details`
 (
     `client_id`               VARCHAR(256)  NOT NULL,
     `resource_ids`            VARCHAR(256)  NULL,

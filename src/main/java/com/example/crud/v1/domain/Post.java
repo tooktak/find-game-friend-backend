@@ -15,10 +15,10 @@ public class Post {
     @Column
     private String contents;
 
-   @Column
+   @Column(nullable = true)
     private String kakaoLink;
 
-   @Column
+   @Column(nullable = true)
     private String discordLink;
 
    @Column
@@ -38,6 +38,12 @@ public class Post {
     }
 
     public Post(String title, String contents, String kakaoLink, String discordLink, String memberId, String gameId) {
+        this.title=title;
+        this.contents=contents;
+        this.kakaoLink=kakaoLink;
+        this.discordLink=discordLink;
+        this.memberId=memberId;
+        this.gameId=gameId;
     }
 
     public Post() {

@@ -24,7 +24,6 @@ public class PostService {
 
     public Long create(final PostCreateRequest r) {
         Post p = new Post(r.getTitle(), r.getContents(),r.getKakaoLink(),r.getDiscordLink(),r.getMemberId(),r.getGameId());
-        postRepository.save(p);
         return postRepository.save(p).getId();
     }
 
@@ -46,14 +45,24 @@ public class PostService {
 
     public List<Post> findByTitle(final String title) {
         // 타이틀을 검색해 그리고 그것을 리스트화 하고 리턴
-        List<Post> po = postRepository.findByTitle(title);
-        return po;
+        List<Post> postTitle = postRepository.findByTitleContaining(title);
+        return postTitle;
     }
+
+    public List<Post> findByGameTitle(final String gameTitle) {
+        //List<Post> postGameTitle = postRepository.findByGameTitleContaining(gameTitle);
+        return null;
+    }
+
+    public List<Post> findByContents(final String Contents) {
+        List<Post> postContents = postRepository.findByContentsContaining(Contents);
+        return postContents;
+    }
+
     public List<Long> deleteByTitle(final String title) {
         // 검색한 것에 대한 넘버값을 알아낸 후 삭제   리스트 순회해서 포스트 값 딜리트
         List<Post> postList = postRepository.findByTitle(title);
         List<Long> deletedIds = new LinkedList<>();
-
 
         // i 0부터 10까지 순회
         for (int i = 0; i < postList.size(); i++) {
@@ -68,6 +77,4 @@ public class PostService {
     public PostReadResponse getPost(final Long id) {
         return PostReadResponse.fromEntity(postRepository.getById(id));
     }
-
-
 }

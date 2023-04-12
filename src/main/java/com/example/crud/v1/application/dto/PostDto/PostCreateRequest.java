@@ -8,6 +8,9 @@ public class PostCreateRequest {
     private String memberId;
     private String gameId;
 
+    public PostCreateRequest() {
+    }
+
     public PostCreateRequest(String title, String contents, String kakaoLink, String discordLink, String memberId, String gameId) {
         this.title = title;
         this.contents = contents;
