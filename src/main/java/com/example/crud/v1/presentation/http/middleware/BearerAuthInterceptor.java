@@ -26,7 +26,6 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object Handler){
         logger.info(">>> interceptor.preHandle 호출");
         String token = authorizationExtractor.extract(request, "Bearer");
-        System.out.println(token);
         if(token.isEmpty()){
             throw new TokenEmptyException();// 이 클래스를 만들어서 맞는 에러를 집어 넣으면 됨
         }

@@ -32,6 +32,6 @@ public class GameController {
 
     @GetMapping("/game/GameTitle")
     public List findByGame(@PathVariable(value = "gameTitle")String gameTitle){
-        return gameService.findByGameName(gameTitle);
+        return gameService.findByGameTitle(gameTitle);
     }
 }

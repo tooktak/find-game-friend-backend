@@ -3,11 +3,16 @@ package com.example.crud.v1.application.Service;
 import com.example.crud.v1.application.dto.PostDto.PostCreateRequest;
 import com.example.crud.v1.application.dto.PostDto.PostReadResponse;
 import com.example.crud.v1.application.dto.PostDto.PostUpdateRequest;
+import com.example.crud.v1.domain.Game;
 import com.example.crud.v1.domain.Post;
+import com.example.crud.v1.infrastructure.GameRepository;
 import com.example.crud.v1.infrastructure.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +22,8 @@ import java.util.stream.Collectors;
 public class PostService {
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private GameRepository gameRepository;
 
     public List<PostReadResponse> getAll(){
         return postRepository.findAll().stream().map(p-> PostReadResponse.fromEntity(p)).collect(Collectors.toList());
@@ -50,8 +57,14 @@ public class PostService {
     }
 
     public List<Post> findByGameTitle(final String gameTitle) {
-        //List<Post> postGameTitle = postRepository.findByGameTitleContaining(gameTitle);
-        return null;
+        List<Game> searchGame = gameRepository.findByTitleContaining(gameTitle);
+        List<String> getGameIds = new ArrayList<>();
+        for(int i =0; i< searchGame.size(); i++){
+            Game game = searchGame.get(i);
+            getGameIds.add(String.valueOf(game.getId()));
+        }
+        List<Post> postGameTitle = postRepository.findAllByGameId(getGameIds);
+        return postGameTitle;
     }
 
     public List<Post> findByContents(final String Contents) {

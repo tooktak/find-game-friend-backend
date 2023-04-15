@@ -46,7 +46,6 @@ public class PostController {
 
     @GetMapping("/by-game-page")
     public List<Post> findByGameTitle(@RequestParam(value = "q")String gameTitle) {
-
         return postService.findByGameTitle(gameTitle);
     }
 

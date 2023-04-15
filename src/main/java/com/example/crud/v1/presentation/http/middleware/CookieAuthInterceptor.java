@@ -24,17 +24,14 @@ public class CookieAuthInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object Handler) {
-        System.out.println(request.getRequestURL());
         logger.info(">>> interceptor.preHandle 호출");
         if(request.getCookies()==null){
             System.out.println("cookie is null");
             return false;
         }
         for (Cookie cookie : request.getCookies()) {
-            System.out.println(cookie.getName());
             if (cookie.getName().equals("userInfo")) {
                 String token = cookie.getValue();
-                System.out.println(token);
                 if (token.isEmpty()) {
                     throw new TokenEmptyException();// 이 클래스를 만들어서 맞는 에러를 집어 넣으면 됨
                 }

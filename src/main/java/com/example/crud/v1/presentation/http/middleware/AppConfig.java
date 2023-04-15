@@ -20,7 +20,7 @@ public class AppConfig implements WebMvcConfigurer {
                 .allowedOrigins("http://localhost:3000")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true)
-                .maxAge(3600);
+                .maxAge(36000);
     }
 
     @Override
