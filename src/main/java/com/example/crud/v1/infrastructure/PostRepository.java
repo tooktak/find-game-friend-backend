@@ -19,6 +19,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findAllByGameId(List<String> gameIds);
     List<Post> findByTitleContaining(String s);
     List<Post> findByContentsContaining(String contents);
+    List<Post> findByMemberId(String s);
 
 
 }

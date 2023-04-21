@@ -32,7 +32,7 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(cookieAuthInterceptor)
-                .addPathPatterns("/**") // 적용할 URL 패턴
+                .addPathPatterns("/write","/mypost", "/mydelete") // 적용할 URL 패턴
                 .excludePathPatterns("/oauth/google/callback**","/logout"); // 제외할 URL 패턴
     }
 }
