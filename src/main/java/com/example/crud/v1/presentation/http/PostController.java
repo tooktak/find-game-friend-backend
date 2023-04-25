@@ -5,9 +5,7 @@ import com.example.crud.v1.application.Service.PostService;
 import com.example.crud.v1.application.dto.PostDto.PostCreateRequest;
 import com.example.crud.v1.application.dto.PostDto.PostReadResponse;
 import com.example.crud.v1.application.dto.PostDto.PostUpdateRequest;
-import com.example.crud.v1.domain.Game;
 import com.example.crud.v1.domain.Post;
-import com.example.crud.v1.presentation.http.util.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,9 +32,14 @@ public class PostController {
         return postService.update(u);
     }
 
-    @DeleteMapping("/delete")
-    public Long deletePost(@PathVariable(value = "id")Long id) {
-        return postService.delete(id);
+    @DeleteMapping("/delete/{userId}")
+    public Long deletePost(@PathVariable(value = "userId")Long userId) {
+        return postService.delete(userId);
+    }
+
+    @DeleteMapping("/deleteAll/{userId}")
+    public Long allDeletePost(@PathVariable(value = "userId")Long userId){
+        return postService.deleteAll(userId);
     }
 
     @GetMapping("/by-title-page")

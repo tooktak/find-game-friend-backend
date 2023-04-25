@@ -1,7 +1,5 @@
 package com.example.crud.v1.infrastructure;
-
 import com.example.crud.v1.domain.Post;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -50,6 +50,21 @@ public class PostService {
         return p.getId();
     }
 
+    public Long deleteAll(final Long userId) {
+        // 검색한 것에 대한 넘버값을 알아낸 후 삭제   리스트 순회해서 포스트 값 딜리트
+        List<Post> postList = postRepository.findByMemberId(String.valueOf(userId));
+        List<Long> deletedIds = new LinkedList<>();
+
+        // i 0부터 10까지 순회
+        for (int i = 0; i < postList.size(); i++) {
+            Post post = postList.get(i);
+            deletedIds.add(post.getId());
+            postRepository.delete(post);
+        }
+        // 리턴하고싶은것이 삭제된 아이디의 리스트 번호
+        return userId;
+    }
+
     public List<Post> findByTitle(final String title) {
         // 타이틀을 검색해 그리고 그것을 리스트화 하고 리턴
         List<Post> postTitle = postRepository.findByTitleContaining(title);
