@@ -1,14 +1,18 @@
 package com.example.crud.v1.presentation.http;
 
-import com.example.crud.v1.application.Service.GameService;
 import com.example.crud.v1.application.Service.PostService;
 import com.example.crud.v1.application.dto.PostDto.PostCreateRequest;
 import com.example.crud.v1.application.dto.PostDto.PostReadResponse;
 import com.example.crud.v1.application.dto.PostDto.PostUpdateRequest;
 import com.example.crud.v1.domain.Post;
+import com.example.crud.v1.infrastructure.PostRepository;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -16,6 +20,8 @@ import java.util.List;
 public class PostController {
     @Autowired
     private PostService postService;
+    @Autowired
+    private PostRepository postRepository;
 
     @GetMapping("/post")
     public List<PostReadResponse> AllPost(){
@@ -32,14 +38,15 @@ public class PostController {
         return postService.update(u);
     }
 
-    @DeleteMapping("/delete/{userId}")
-    public Long deletePost(@PathVariable(value = "userId")Long userId) {
-        return postService.delete(userId);
+    @DeleteMapping("/delete/{cardId}")
+    public Long deletePost(@PathVariable(value = "cardId")Long cardId) {
+        return postService.delete(cardId);
     }
 
-    @DeleteMapping("/deleteAll/{userId}")
-    public Long allDeletePost(@PathVariable(value = "userId")Long userId){
-        return postService.deleteAll(userId);
+    @DeleteMapping("/deleteAll")
+    public Long allDeletePost(HttpServletRequest request){
+        Long memberId = (Long) request.getAttribute("id");
+            return postService.deleteAll(memberId);
     }
 
     @GetMapping("/by-title-page")

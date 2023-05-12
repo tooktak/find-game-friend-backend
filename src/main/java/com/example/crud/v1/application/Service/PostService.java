@@ -7,11 +7,15 @@ import com.example.crud.v1.domain.Game;
 import com.example.crud.v1.domain.Post;
 import com.example.crud.v1.infrastructure.GameRepository;
 import com.example.crud.v1.infrastructure.PostRepository;
+import com.example.crud.v1.presentation.http.util.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +28,8 @@ public class PostService {
     private PostRepository postRepository;
     @Autowired
     private GameRepository gameRepository;
+    @Autowired
+    private HttpServletRequest request;
 
     public List<PostReadResponse> getAll(){
         return postRepository.findAll().stream().map(p-> PostReadResponse.fromEntity(p)).collect(Collectors.toList());
@@ -44,10 +50,17 @@ public class PostService {
         return p.getId();
     }
 
-    public Long delete(final Long id) {
-        Post p = postRepository.getById(id);
-        postRepository.delete(p);
-        return p.getId();
+    public Long delete(final Long cardId) {
+        Long memberId = (Long) request.getAttribute("id");
+        System.out.println("123");
+        Post p = postRepository.getById(cardId);
+        if(p.getMemberId().equals(String.valueOf(memberId)) == true){
+            postRepository.delete(p);
+            return p.getId();
+        }
+        else {
+            return null;
+        }
     }
 
     public Long deleteAll(final Long userId) {

@@ -9,4 +9,22 @@ services:
       MYSQL_USER: test
       MYSQL_PASSWORD: test
     ports:
-      - 3306:3306
+      - '4856:4856'
+    volumes:
+      - /home/ubuntu/test/db/data:/var/lib/mysql
+  spring-crud-example:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: container_app
+    links:
+      - mysql
+    restart: always
+    ports:
+      - "80:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:4856/test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
