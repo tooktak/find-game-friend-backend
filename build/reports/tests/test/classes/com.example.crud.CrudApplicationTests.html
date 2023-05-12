@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.001s</div>
+<div class="counter">0.002s</div>
 <p>duration</p>
 </div>
 </td>
@@ -275,7 +275,7 @@ Caused by: java.net.ConnectException: Connection refused: connect
 </thead>
 <tr>
 <td class="failures">contextLoads()</td>
-<td class="failures">0.001s</td>
+<td class="failures">0.002s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -283,21 +283,21 @@ Caused by: java.net.ConnectException: Connection refused: connect
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>11:45:14.568 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-11:45:14.579 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-11:45:14.610 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.crud.CrudApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-11:45:14.621 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.crud.CrudApplicationTests], using SpringBootContextLoader
-11:45:14.625 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.crud.CrudApplicationTests]: class path resource [com/example/crud/CrudApplicationTests-context.xml] does not exist
-11:45:14.626 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.crud.CrudApplicationTests]: class path resource [com/example/crud/CrudApplicationTestsContext.groovy] does not exist
-11:45:14.626 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.crud.CrudApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-11:45:14.626 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.crud.CrudApplicationTests]: CrudApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-11:45:14.663 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.crud.CrudApplicationTests]
-11:45:14.709 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\bs\study\spring-crud-example\build\classes\java\main\com\example\crud\CrudApplication.class]
-11:45:14.711 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.crud.CrudApplication for test class com.example.crud.CrudApplicationTests
-11:45:14.790 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.crud.CrudApplicationTests]: using defaults.
-11:45:14.790 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-11:45:14.811 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@27dc79f7, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6b85300e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3aaf4f07, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5cbf9e9f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@18e8473e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5a2f016d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1a38ba58, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3ad394e6, org.springframework.test.context.event.EventPublishingTestExecutionListener@6058e535, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@42deb43a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1deb2c43, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3bb9efbc, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1cefc4b3, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2b27cc70, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6f6a7463]
-11:45:14.814 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@33aa93c testClass = CrudApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@32c0915e testClass = CrudApplicationTests, locations = '{}', classes = '{class com.example.crud.CrudApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4ee37ca3, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7446d8d5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@306851c7, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@41813449, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@19fb8826, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@2a7ed1f], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+<pre>17:22:12.873 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+17:22:12.884 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+17:22:12.915 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.crud.CrudApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+17:22:12.925 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.crud.CrudApplicationTests], using SpringBootContextLoader
+17:22:12.929 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.crud.CrudApplicationTests]: class path resource [com/example/crud/CrudApplicationTests-context.xml] does not exist
+17:22:12.930 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.crud.CrudApplicationTests]: class path resource [com/example/crud/CrudApplicationTestsContext.groovy] does not exist
+17:22:12.930 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.crud.CrudApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+17:22:12.931 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.crud.CrudApplicationTests]: CrudApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:22:12.969 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.crud.CrudApplicationTests]
+17:22:13.019 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\bs\study\spring-crud-example\build\classes\java\main\com\example\crud\CrudApplication.class]
+17:22:13.020 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.crud.CrudApplication for test class com.example.crud.CrudApplicationTests
+17:22:13.114 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.crud.CrudApplicationTests]: using defaults.
+17:22:13.115 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+17:22:13.135 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@27dc79f7, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6b85300e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3aaf4f07, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5cbf9e9f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@18e8473e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5a2f016d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1a38ba58, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3ad394e6, org.springframework.test.context.event.EventPublishingTestExecutionListener@6058e535, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@42deb43a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1deb2c43, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3bb9efbc, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1cefc4b3, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2b27cc70, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6f6a7463]
+17:22:13.139 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@33aa93c testClass = CrudApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@32c0915e testClass = CrudApplicationTests, locations = '{}', classes = '{class com.example.crud.CrudApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@4ee37ca3, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7446d8d5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@306851c7, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@41813449, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@19fb8826, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@2a7ed1f], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -307,12 +307,12 @@ Caused by: java.net.ConnectException: Connection refused: connect
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.4)
 
-2023-05-11 11:45:15.118  INFO 8932 --- [    Test worker] com.example.crud.CrudApplicationTests    : Starting CrudApplicationTests using Java 11.0.13 on DESKTOP-QQCIN9I with PID 8932 (started by asdww in D:\bs\study\spring-crud-example)
-2023-05-11 11:45:15.119  INFO 8932 --- [    Test worker] com.example.crud.CrudApplicationTests    : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-05-11 11:45:15.906  INFO 8932 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-05-11 11:45:15.961  INFO 8932 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 3 JPA repository interfaces.
-2023-05-11 11:45:16.360  INFO 8932 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-11 11:45:21.567 ERROR 8932 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2023-05-12 17:22:13.457  INFO 700 --- [    Test worker] com.example.crud.CrudApplicationTests    : Starting CrudApplicationTests using Java 11.0.13 on DESKTOP-QQCIN9I with PID 700 (started by asdww in D:\bs\study\spring-crud-example)
+2023-05-12 17:22:13.458  INFO 700 --- [    Test worker] com.example.crud.CrudApplicationTests    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-05-12 17:22:14.272  INFO 700 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-12 17:22:14.328  INFO 700 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
+2023-05-12 17:22:14.743  INFO 700 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-12 17:22:19.952 ERROR 700 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
 
@@ -474,8 +474,8 @@ Caused by: java.net.ConnectException: Connection refused: connect
 	at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:292) ~[mysql-connector-java-5.1.13.jar:na]
 	... 135 common frames omitted
 
-2023-05-11 11:45:21.654  INFO 8932 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-11 11:45:26.757 ERROR 8932 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2023-05-12 17:22:20.038  INFO 700 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-12 17:22:25.147 ERROR 700 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
 
@@ -644,11 +644,11 @@ Caused by: java.net.ConnectException: Connection refused: connect
 	at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:292) ~[mysql-connector-java-5.1.13.jar:na]
 	... 142 common frames omitted
 
-2023-05-11 11:45:26.804  INFO 8932 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-11 11:45:26.853  INFO 8932 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
-2023-05-11 11:45:27.010  INFO 8932 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-05-11 11:45:27.102  INFO 8932 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-11 11:45:32.211 ERROR 8932 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2023-05-12 17:22:25.195  INFO 700 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-12 17:22:25.239  INFO 700 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2023-05-12 17:22:25.447  INFO 700 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-12 17:22:25.551  INFO 700 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-12 17:22:30.663 ERROR 700 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
 
@@ -818,7 +818,7 @@ Caused by: java.net.ConnectException: Connection refused: connect
 	at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:292) ~[mysql-connector-java-5.1.13.jar:na]
 	... 143 common frames omitted
 
-2023-05-11 11:45:32.218  WARN 8932 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2023-05-12 17:22:30.671  WARN 700 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
 
@@ -988,9 +988,9 @@ Caused by: java.net.ConnectException: Connection refused: connect
 	at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:292) ~[mysql-connector-java-5.1.13.jar:na]
 	... 143 common frames omitted
 
-2023-05-11 11:45:32.229  INFO 8932 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
-2023-05-11 11:45:32.675  INFO 8932 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-05-11 11:45:37.768 ERROR 8932 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2023-05-12 17:22:30.683  INFO 700 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-05-12 17:22:31.134  INFO 700 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-12 17:22:36.235 ERROR 700 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
 
@@ -1160,16 +1160,16 @@ Caused by: java.net.ConnectException: Connection refused: connect
 	at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:292) ~[mysql-connector-java-5.1.13.jar:na]
 	... 143 common frames omitted
 
-2023-05-11 11:45:37.770  WARN 8932 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
-2023-05-11 11:45:37.770 ERROR 8932 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Communications link failure
+2023-05-12 17:22:36.237  WARN 700 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2023-05-12 17:22:36.237 ERROR 700 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2023-05-11 11:45:37.774 ERROR 8932 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-2023-05-11 11:45:37.774  WARN 8932 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-2023-05-11 11:45:37.781  INFO 8932 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2023-05-12 17:22:36.240 ERROR 700 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+2023-05-12 17:22:36.241  WARN 700 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+2023-05-12 17:22:36.247  INFO 700 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-05-11 11:45:37.800 ERROR 8932 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2023-05-12 17:22:36.267 ERROR 700 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.23.jar:5.3.23]
@@ -1352,7 +1352,7 @@ Caused by: java.net.ConnectException: Connection refused: connect
 	at com.mysql.jdbc.MysqlIO.&lt;init&gt;(MysqlIO.java:292) ~[mysql-connector-java-5.1.13.jar:na]
 	... 143 common frames omitted
 
-2023-05-11 11:45:37.805 ERROR 8932 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@27dc79f7] to prepare test instance [com.example.crud.CrudApplicationTests@56a72887]
+2023-05-12 17:22:36.272 ERROR 700 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@27dc79f7] to prepare test instance [com.example.crud.CrudApplicationTests@2728add3]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.23.jar:5.3.23]
@@ -1549,7 +1549,7 @@ Caused by: java.net.ConnectException: Connection refused: connect
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.5</a> at 2023. 5. 11. 오전 11:45:37</p>
+<a href="http://www.gradle.org">Gradle 7.5</a> at 2023. 5. 12. 오후 5:22:36</p>
 </div>
 </div>
 </body>
