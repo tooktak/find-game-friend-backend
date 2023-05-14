@@ -2,16 +2,17 @@ version: "3.7"
 
 services:
   mysql:
-    image: mariadb:10.4
+    image: mysql:5.7
     environment:
-      MARIADB_ROOT_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
       MYSQL_DATABASE: test
       MYSQL_USER: test
       MYSQL_PASSWORD: test
     ports:
-      - '4856:4856'
+      - '3306:3306'
+    tty: true
     volumes:
-      - /home/ubuntu/test/db/data:/var/lib/mysql
+      - ./mysqldata:/var/lib/mysql
   spring-crud-example:
     build:
       context: ./
@@ -19,13 +20,13 @@ services:
     container_name: container_app
     links:
       - mysql
-    restart: always
+    #    restart: always
     ports:
       - "80:8080"
     tty: true
     depends_on:
       - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mariadb://localhost:4856/test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/test?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      SPRING_DATASOURCE_USERNAME: test
+      SPRING_DATASOURCE_PASSWORD: test
