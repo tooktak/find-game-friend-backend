@@ -42,7 +42,7 @@ public class UserController {
         cookie.setPath("/"); // 쿠키 경로 설정 (루트 경로)
         cookie.setSecure(true);
         // SameSite 설정을 포함한 Set-Cookie 헤더 직접 설정
-        String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/;  SameSite=None; secure",
+        String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/;  SameSite=Lax; secure",
                 cookie.getName(), cookie.getValue(), cookie.getMaxAge());
         response.setHeader("Set-Cookie", cookieHeader);
         response.addCookie(cookie); // 쿠키 추가
