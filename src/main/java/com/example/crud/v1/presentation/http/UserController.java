@@ -40,7 +40,12 @@ public class UserController {
         Cookie cookie = new Cookie("userInfo", this.jwtTokenProvider.createToken(user.getId()));
         cookie.setMaxAge(3600); // 쿠키 유효시간 설정 (1시간)
         cookie.setPath("/"); // 쿠키 경로 설정 (루트 경로)
+        cookie.setSecure(true);
         cookie.setHttpOnly(true); // HttpOnly 설정
+        // SameSite 설정을 포함한 Set-Cookie 헤더 직접 설정
+        String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/; Secure; HttpOnly; SameSite=None",
+                cookie.getName(), cookie.getValue(), cookie.getMaxAge());
+        response.setHeader("Set-Cookie", cookieHeader);
         response.addCookie(cookie); // 쿠키 추가
 
         return new TokenResponse(this.jwtTokenProvider.createToken(user.getId()), "cookie");
