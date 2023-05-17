@@ -41,8 +41,9 @@ public class UserController {
         cookie.setMaxAge(3600); // 쿠키 유효시간 설정 (1시간)
         cookie.setPath("/"); // 쿠키 경로 설정 (루트 경로)
         cookie.setSecure(true);
+        cookie.setHttpOnly(true);
         // SameSite 설정을 포함한 Set-Cookie 헤더 직접 설정
-        String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/;  SameSite=Lax; secure",
+        String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/; SameSite=None; Secure; HttpOnly",
                 cookie.getName(), cookie.getValue(), cookie.getMaxAge());
         response.setHeader("Set-Cookie", cookieHeader);
         response.addCookie(cookie); // 쿠키 추가
