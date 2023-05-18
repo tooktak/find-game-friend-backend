@@ -1,5 +1,5 @@
 HELP.md
-mysqldata/
+
 ### STS ###
 .apt_generated
 .classpath
@@ -20,14 +20,13 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
+mysqldata/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-
 ### VS Code ###
 .vscode/
 /mysqldata/
