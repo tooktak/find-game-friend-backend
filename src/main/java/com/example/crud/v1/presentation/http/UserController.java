@@ -43,7 +43,7 @@ public class UserController {
         cookie.setSecure(true);
         cookie.setHttpOnly(true);
         // SameSite 설정을 포함한 Set-Cookie 헤더 직접 설정
-        String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/; SameSite=None; Secure; HttpOnly",
+        String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/; SameSite=None; Secure",
                 cookie.getName(), cookie.getValue(), cookie.getMaxAge());
         response.setHeader("Set-Cookie", cookieHeader);
         response.addCookie(cookie); // 쿠키 추가
