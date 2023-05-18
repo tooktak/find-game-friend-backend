@@ -8,11 +8,13 @@ import com.example.crud.v1.presentation.http.util.JwtTokenProvider;
 import com.example.crud.v1.application.Service.UserService;
 import com.example.crud.v1.presentation.http.util.TokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.time.Duration;
 import java.util.Optional;
 
 
@@ -36,8 +38,15 @@ public class UserController {
         } else {
             user = userService.register(userCreateRequest);
         }
+        ResponseCookie cookie = ResponseCookie.from("userInfo", this.jwtTokenProvider.createToken(user.getId()))
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .maxAge(Duration.ofSeconds(3600))
+                .sameSite("None")
+                .build();
 
-        Cookie cookie = new Cookie("userInfo", this.jwtTokenProvider.createToken(user.getId()));
+        /*Cookie cookie = new Cookie("userInfo", this.jwtTokenProvider.createToken(user.getId()));
         cookie.setMaxAge(3600); // 쿠키 유효시간 설정 (1시간)
         cookie.setPath("/"); // 쿠키 경로 설정 (루트 경로)
         cookie.setSecure(true);
@@ -46,7 +55,7 @@ public class UserController {
         String cookieHeader = String.format("%s=%s; Max-Age=%d; Path=/; Secure; SameSite=None",
                 cookie.getName(), cookie.getValue(), cookie.getMaxAge());
         response.setHeader("Set-Cookie", cookieHeader);
-        response.addCookie(cookie); // 쿠키 추가
+        response.addCookie(cookie); // 쿠키 추가*/
 
         return new TokenResponse(this.jwtTokenProvider.createToken(user.getId()), "cookie");
     }
