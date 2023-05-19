@@ -19,6 +19,8 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("https://find-game-friend-front.vercel.app","https://find-game-friend-front-git-main-findgamefriends.vercel.app","find-game-friend-front-lajbcmti2-findgamefriends.vercel.app")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .allowedHeaders("Set-Cookie")
                 .allowCredentials(true)
                 .maxAge(36000);
     }

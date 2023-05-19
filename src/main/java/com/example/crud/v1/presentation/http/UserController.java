@@ -7,6 +7,7 @@ import com.example.crud.v1.presentation.http.util.GoogleIDTokenResolver;
 import com.example.crud.v1.presentation.http.util.JwtTokenProvider;
 import com.example.crud.v1.application.Service.UserService;
 import com.example.crud.v1.presentation.http.util.TokenResponse;
+import org.apache.tomcat.util.http.SameSiteCookies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -40,7 +41,7 @@ public class UserController {
             user = userService.register(userCreateRequest);
         }
         ResponseCookie cookie = ResponseCookie.from("userInfo", this.jwtTokenProvider.createToken(user.getId()))
-                .httpOnly(true)
+                .httpOnly(false)
                 .secure(true)
                 .path("/")
                 .maxAge(Duration.ofSeconds(3600))
