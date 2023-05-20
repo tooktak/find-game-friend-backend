@@ -15,7 +15,7 @@ spring:
     thymeleaf:
         enabled: true
     vercel:
-        client-url: https://find-game-friend-front.vercel.app/
+        client-url: https://aribomy.com
 
 security:
     jwt:

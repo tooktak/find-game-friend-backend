@@ -20,7 +20,6 @@ public class AppConfig implements WebMvcConfigurer {
                 .allowedOrigins("https://aribomy.com")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
-                .allowedHeaders("Set-Cookie")
                 .allowCredentials(true)
                 .maxAge(36000);
     }
