@@ -17,7 +17,7 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://find-game-friend-front.vercel.app","https://find-game-friend-front-git-main-findgamefriends.vercel.app","find-game-friend-front-lajbcmti2-findgamefriends.vercel.app")
+                .allowedOrigins("https://aribomy.com")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowedHeaders("Set-Cookie")

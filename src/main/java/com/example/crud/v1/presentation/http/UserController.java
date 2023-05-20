@@ -40,6 +40,7 @@ public class UserController {
         } else {
             user = userService.register(userCreateRequest);
         }
+
         ResponseCookie cookie = ResponseCookie.from("userInfo", this.jwtTokenProvider.createToken(user.getId()))
                 .httpOnly(false)
                 .secure(true)
