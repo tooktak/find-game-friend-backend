@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/find-mate-post")
-@CrossOrigin(origins = "https://aribomy.com")
+@CrossOrigin(origins = "https://aribomy.com/*")
 public class PostController {
     @Autowired
     private PostService postService;

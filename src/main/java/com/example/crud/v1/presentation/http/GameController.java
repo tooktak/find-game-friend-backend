@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-@CrossOrigin(origins = "https://aribomy.com")
+@CrossOrigin(origins = "https://aribomy.com/*")
 public class GameController {
 
     @Autowired
