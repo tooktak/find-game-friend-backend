@@ -20,6 +20,7 @@ public class AppConfig implements WebMvcConfigurer {
                 .allowedOrigins("https://aribomy.com", "https://find-game-friend-front-ivkv9rz0h-findgamefriends.vercel.app/")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true)
+                .exposedHeaders("authorization")
                 .maxAge(3600);
     }
 
