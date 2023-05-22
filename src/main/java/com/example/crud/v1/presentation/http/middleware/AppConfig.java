@@ -17,10 +17,10 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://aribomy.com/*")
+                .allowedOrigins("https://aribomy.com")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*")
                 .exposedHeaders("Access-Control-Allow-Origin") // 응답 헤더에 Access-Control-Allow-Origin 헤더 추가
+                .allowCredentials(true)
                 .maxAge(3600);
     }
 
