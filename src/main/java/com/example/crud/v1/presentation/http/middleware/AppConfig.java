@@ -17,10 +17,10 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://aribomy.com", "https://find-game-friend-front-ivkv9rz0h-findgamefriends.vercel.app/")
+                .allowedOrigins("https://aribomy.com")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true)
-                .exposedHeaders("authorization")
+                .exposedHeaders("allowedOrigins")
                 .maxAge(3600);
     }
 
