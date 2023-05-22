@@ -19,9 +19,8 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("https://aribomy.com")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("Origin")
-                .allowCredentials(true)
-                .exposedHeaders("allowedOrigins")
+                .allowedHeaders("Access-Control-Allow-Origin")
+                .exposedHeaders("Access-Control-Allow-Origin")
                 .maxAge(3600);
     }
 
