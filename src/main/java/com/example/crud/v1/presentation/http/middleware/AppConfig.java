@@ -19,7 +19,6 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("https://aribomy.com", "https://find-game-friend-front-ivkv9rz0h-findgamefriends.vercel.app/")
                 .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
-                .exposedHeaders("Access-Control-Allow-Origin") // 응답 헤더에 Access-Control-Allow-Origin 헤더 추가
                 .allowCredentials(true)
                 .maxAge(3600);
     }
