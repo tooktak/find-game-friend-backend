@@ -14,8 +14,6 @@ spring:
         port: 8080
     thymeleaf:
         enabled: true
-    vercel:
-        client-url: https://aribomy.com
 
 security:
     jwt:

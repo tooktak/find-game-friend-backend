@@ -21,7 +21,6 @@ import java.util.Optional;
 
 
 @RestController
-@CrossOrigin(origins = "https://aribomy.com/*")
 public class UserController {
     private UserService userService;
     @Autowired
