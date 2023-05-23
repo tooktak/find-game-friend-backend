@@ -15,7 +15,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().cors().configurationSource(request -> {
             var cors = new CorsConfiguration();
 
-            cors.setAllowedOrigins(List.of("https://aribomy.com"));
+            cors.setAllowedOrigins(List.of("http://aribomy.com"));
             cors.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS"));
             cors.setAllowedHeaders(List.of("*"));
             cors.setAllowCredentials(true);
