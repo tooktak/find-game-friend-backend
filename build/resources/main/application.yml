@@ -1,7 +1,7 @@
 spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:4856/test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
         username: test
         password: test
     jpa:
@@ -14,8 +14,6 @@ spring:
         port: 8080
     thymeleaf:
         enabled: true
-    vercel:
-        client-url: https://find-game-friend-front.vercel.app
 
 security:
     jwt:
@@ -23,4 +21,3 @@ security:
             secret-key: 'Vu6WXrg3t9'
             expire-length: '3600000'
 upload-dir: src/main/resources/templates/image
-

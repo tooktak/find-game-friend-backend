@@ -46,7 +46,7 @@ public class UserController {
                 .secure(true)
                 .path("/")
                 .maxAge(Duration.ofSeconds(3600))
-                .sameSite("Lax")
+                .sameSite("None")
                 .build();
 
         response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
