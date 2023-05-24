@@ -42,11 +42,11 @@ public class UserController {
         }
 
         ResponseCookie cookie = ResponseCookie.from("userInfo", this.jwtTokenProvider.createToken(user.getId()))
-                .httpOnly(false)
-                .secure(true)
+                .httpOnly(true)
                 .path("/")
                 .maxAge(Duration.ofSeconds(3600))
                 .sameSite("None")
+                .secure(true)
                 .build();
 
         response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());

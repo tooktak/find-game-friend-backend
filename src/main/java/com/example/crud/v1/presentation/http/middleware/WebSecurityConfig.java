@@ -22,6 +22,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             return cors;
         });
 
+        http.headers()
+                .xssProtection()
+                .xssProtectionEnabled(true) // XSS Protection 활성화
+                .block(true); // XSS 공격 시 브라우저에서 차단
+
             http
                 .authorizeRequests()
                 .antMatchers("/**")
