@@ -57,10 +57,16 @@ public class UserController {
 
     @GetMapping("/sign-out")
     public ResponseEntity<String> Logout(HttpServletResponse response) {
-        Cookie cookie = new Cookie("userInfo", null);
-        cookie.setMaxAge(0); // 쿠키 유효시간 설정 (1시간)
-        cookie.setPath("/"); // 쿠키 경로 설정 (루트 경로)
-        response.addCookie(cookie); // 쿠키 추가
+        ResponseCookie cookie = ResponseCookie.from("userInfo", null)
+                .httpOnly(true)
+                .path("/")
+                .maxAge(Duration.ofSeconds(0))
+                .sameSite("None")
+                .secure(true)
+                .domain(".aribomy.com") // 도메인 설정
+                .build();
+
+        response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
         return ResponseEntity.ok("sign-out");
     }
 
