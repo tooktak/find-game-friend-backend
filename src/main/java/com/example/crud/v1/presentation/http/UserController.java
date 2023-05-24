@@ -47,6 +47,7 @@ public class UserController {
                 .maxAge(Duration.ofSeconds(3600))
                 .sameSite("None")
                 .secure(true)
+                .domain(".aribomy.com") // 도메인 설정
                 .build();
 
         response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
