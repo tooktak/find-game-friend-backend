@@ -5,9 +5,9 @@ services:
     image: mysql:8.0.32
     environment:
       MYSQL_ROOT_PASSWORD: test
-      MYSQL_DATABASE: fgfDB
+      MYSQL_DATABASE: test
       MYSQL_USER: test
-      MYSQL_PASSWORD: test1234
+      MYSQL_PASSWORD: test
     ports:
       - '3306:3306'
     tty: true
@@ -27,6 +27,6 @@ services:
     depends_on:
       - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://fgfdb.cmimwlzbjnub.ap-northeast-2.rds.amazonaws.com :3306/fgfDB
+      SPRING_DATASOURCE_URL: jdbc:mysql://fgfdb.cmimwlzbjnub.ap-northeast-2.rds.amazonaws.com:3306/fgfDB?useSSL=false&autoReconnect=true&characterEncoding=UTF-8
       SPRING_DATASOURCE_USERNAME: test
-      SPRING_DATASOURCE_PASSWORD: test
+      SPRING_DATASOURCE_PASSWORD: test1234

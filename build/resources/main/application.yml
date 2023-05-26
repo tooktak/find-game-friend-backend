@@ -1,15 +1,13 @@
 spring:
     datasource:
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://fgfdb.cmimwlzbjnub.ap-northeast-2.rds.amazonaws.com :3306/fgfDB
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://fgfdb.cmimwlzbjnub.ap-northeast-2.rds.amazonaws.com:3306/fgfDB?useSSL=false&autoReconnect=true&characterEncoding=UTF-8
         username: test
         password: test1234
     jpa:
         hibernate:
-        ddl-auto: create
-        generate-ddl: true
-        show-sql: true
-        database: mysql
+            ddl-auto: update
+            show-sql: true
     server:
         port: 8080
     thymeleaf:
