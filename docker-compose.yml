@@ -12,8 +12,6 @@ services:
     ports:
       - "80:8080"
     tty: true
-    depends_on:
-      - mysql
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://fgfdb.cmimwlzbjnub.ap-northeast-2.rds.amazonaws.com:3306/fgfDB?useSSL=false&autoReconnect=true&character_set_server=utf8mb4
       SPRING_DATASOURCE_USERNAME: test
