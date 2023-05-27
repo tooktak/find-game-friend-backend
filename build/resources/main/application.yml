@@ -1,9 +1,9 @@
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://fgfdb.cmimwlzbjnub.ap-northeast-2.rds.amazonaws.com:3306/fgfDB
+        url: jdbc:mysql://fgfdb.cmimwlzbjnub.ap-northeast-2.rds.amazonaws.com:3306/fgfDB?useSSL=false&autoReconnect=true&character_set_server=utf8mb4
         username: test
-        password: test1234
+        password: qweasd123
     jpa:
         hibernate:
             ddl-auto: create
