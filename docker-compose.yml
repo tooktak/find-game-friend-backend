@@ -1,16 +1,32 @@
 version: "3.7"
 
 services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    ports:
+      - '3306:3306'
+    tty: true
+    volumes:
+      - ./mysqldata:/var/lib/mysql
   spring-crud-example:
     build:
       context: ./
       dockerfile: dockerfile
     container_name: container_app
-    restart: always
+    links:
+      - mysql
+    #    restart: always
     ports:
       - "80:8080"
     tty: true
+    depends_on:
+      - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://fgfdb.cmimwlzbjnub.ap-northeast-2.rds.amazonaws.com:3306/fgfDB?useSSL=false&autoReconnect=true&character_set_server=utf8mb4
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/test?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
       SPRING_DATASOURCE_USERNAME: test
-      SPRING_DATASOURCE_PASSWORD: qweasd123
+      SPRING_DATASOURCE_PASSWORD: test
