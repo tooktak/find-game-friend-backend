@@ -13,7 +13,6 @@ services:
     tty: true
     volumes:
       - ./mysqldata:/var/lib/mysql
-    restart: always
   spring-crud-example:
     build:
       context: ./
@@ -21,12 +20,13 @@ services:
     container_name: container_app
     links:
       - mysql
+    #    restart: always
     ports:
       - "80:8080"
     tty: true
     depends_on:
       - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/test?autoReconnect=true&character_set_server=utf8mb4
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/test?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
       SPRING_DATASOURCE_USERNAME: test
       SPRING_DATASOURCE_PASSWORD: test
