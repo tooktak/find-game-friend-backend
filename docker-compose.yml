@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   mysql:
-    image: mysql:8.0.32
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: test
       MYSQL_DATABASE: test
@@ -25,6 +25,8 @@ services:
       - "80:8080"
     tty: true
     restart: always
+    depends_on:
+      - mysql
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/test?autoReconnect=true&character_set_server=utf8mb4
       SPRING_DATASOURCE_USERNAME: test
