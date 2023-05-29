@@ -13,6 +13,7 @@ services:
     tty: true
     volumes:
       - ./mysqldata:/var/lib/mysql
+    restart: always
   spring-crud-example:
     build:
       context: ./
@@ -23,7 +24,6 @@ services:
     ports:
       - "80:8080"
     tty: true
-    restart: always
     depends_on:
       - mysql
     environment:
