@@ -6,9 +6,9 @@ spring:
         password: test
     jpa:
         hibernate:
-        ddl-auto: create
-        generate-ddl: true
-        show-sql: true
+            ddl-auto: create
+            generate-ddl: true
+            show-sql: true
         database: mysql
     server:
         port: 8080
