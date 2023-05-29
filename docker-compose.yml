@@ -27,6 +27,6 @@ services:
     depends_on:
       - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/test?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF8
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/test?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
       SPRING_DATASOURCE_USERNAME: test
       SPRING_DATASOURCE_PASSWORD: test
